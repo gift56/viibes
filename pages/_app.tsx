@@ -2,6 +2,8 @@ import type { AppProps } from "next/app";
 import { useState, useEffect } from "react";
 import "@/styles/globals.css";
 import Image from "next/image";
+import Head from "next/head";
+import { LeftSideBar, RightSidebar } from "@/components";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isSSR, setIsSSR] = useState(true);
@@ -13,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
   if (isSSR)
     return (
       <div className="w-full fixed bg-white z-40 flex h-screen items-center justify-center place-items-center">
-        <div className="w-40 h-40">
+        <div className="w-40 h-40 animate-ping">
           <Image
             width={40}
             height={40}
@@ -26,5 +28,24 @@ export default function App({ Component, pageProps }: AppProps) {
       </div>
     );
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Head>
+        <title>
+          Viibes - Expore the fun in video sharing and Have a happy life
+        </title>
+        <meta
+          name="description"
+          content="Expore the fun in video sharing and Have a happy life"
+        />
+      </Head>
+      <div className="w-full flex items-start justify-start gap-4">
+        <LeftSideBar />
+        <div>
+          <Component {...pageProps} />
+        </div>
+        <RightSidebar />
+      </div>
+    </>
+  );
 }
