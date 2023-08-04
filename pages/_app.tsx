@@ -39,13 +39,17 @@ export default function App({ Component, pageProps }: AppProps) {
           content="Expore the fun in video sharing and Have a happy life"
         />
       </Head>
-      <div className="w-full flex items-start justify-start gap-4">
-        <LeftSideBar />
-        <div>
+      <main className="xl:w-[1200px] m-auto overflow-hidden h-[100vh] flex items-start justify-between">
+        <div className="flex-[1]">
+          <LeftSideBar />
+        </div>
+        <div className="flex-[2]">
           <Component {...pageProps} />
         </div>
-        <RightSidebar />
-      </div>
+        <div className="flex-[1]">
+          <RightSidebar />
+        </div>
+      </main>
     </>
   );
 }
