@@ -96,23 +96,23 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
             ></video>
           </Link>
 
-          <div className="absolute bottom-6 w-[80%] cursor-pointer left-[8%] md:w-[70%] md:left-[15%] lg:left-0 flex gap-10 justify-between p-3 lg:w-full bg-red-500">
+          <div className="absolute bottom-[7%] md:bottom-8 w-[90%] cursor-pointer left-[5%] sm:w-[70%] sm:left-[15%] lg:left-0 flex gap-10 items-end justify-between p-3 lg:w-full bg-black/30 h-[90%] rounded-3xl">
             {playing ? (
               <button onClick={onVideoPress}>
-                <BsFillPauseFill className="text-black text-2xl md:text-3xl lg:text-4xl" />
+                <BsFillPauseFill className="text-white text-2xl md:text-3xl lg:text-4xl" />
               </button>
             ) : (
               <button onClick={onVideoPress}>
-                <BsFillPlayFill className="text-black text-2xl md:text-3xl lg:text-4xl" />
+                <BsFillPlayFill className="text-white text-2xl md:text-3xl lg:text-4xl" />
               </button>
             )}
             {videoMuted ? (
               <button onClick={() => setVideoMuted(false)}>
-                <HiVolumeOff className="text-black text-2xl md:text-3xl lg:text-4xl" />
+                <HiVolumeOff className="text-white text-2xl md:text-3xl lg:text-4xl" />
               </button>
             ) : (
               <button onClick={() => setVideoMuted(true)}>
-                <HiVolumeUp className="text-black text-2xl md:text-3xl lg:text-4xl" />
+                <HiVolumeUp className="text-white text-2xl md:text-3xl lg:text-4xl" />
               </button>
             )}
           </div>
