@@ -9,7 +9,14 @@ interface VideoProps {
 const Homepage = ({ videos }: VideoProps) => {
   console.log(videos);
 
-  return <div className="w-full flex flex-col items-start gap-4 h-screen overflow-y-auto overflow-x-hidden scrollbar-hide">Homepage</div>;
+  return (
+    <div className="w-full flex flex-col items-start gap-4 h-screen overflow-y-auto overflow-x-hidden scrollbar-hide">
+      <h2 className="w-full text-xl font-bold sticky top-0 bg-white shadow-cardShad p-6">
+        Home
+      </h2>
+      <div></div>
+    </div>
+  );
 };
 
 // export const getServerSideProps = async () => {

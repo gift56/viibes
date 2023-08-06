@@ -6,7 +6,11 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        cardShad: "0px 14px 34px rgba(0, 0, 0, 0.05)",
+      },
+    },
   },
   plugins: [require("tailwind-scrollbar-hide")],
 };
