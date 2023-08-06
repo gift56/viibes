@@ -75,7 +75,7 @@ const LeftSideBar = () => {
       <div
         className={`${
           mobileNav ? "left-0" : "-left-full"
-        } tab:hidden flex flex-col h-screen bg-black/40 gap-7 absolute top-0 w-full z-10 transition-all duration-300 overflow-hidden`}
+        } lg:hidden flex flex-col h-screen bg-black/40 gap-7 absolute top-0 w-full z-10 transition-all duration-300 overflow-hidden`}
       >
         <div
           ref={modalRef}
