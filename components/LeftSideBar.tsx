@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { AiFillHome } from "react-icons/ai";
 import Discover from "./Discover";
-import Footer from "./Footer";
+import Settings from "./Settings";
 
 const LeftSideBar = () => {
   return (
@@ -26,7 +26,7 @@ const LeftSideBar = () => {
           </Link>
         </div>
         <Discover />
-        <Footer />
+        <Settings />
       </div>
     </nav>
   );
