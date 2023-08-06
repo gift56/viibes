@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Video } from "@/types";
-import { NoResult } from "@/components";
+import { NoResult, VideoCard } from "@/components";
 
 interface VideoProps {
   videos: Video[];
@@ -21,7 +21,7 @@ const Homepage = ({ videos }: VideoProps) => {
             <VideoCard post={video} key={video._id} />
           ))
         ) : (
-          <NoResult text={"No Videos Found!"} />
+          <NoResult text="No Videos Found!" />
         )}
       </div>
     </div>
