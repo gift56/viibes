@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { Video } from "@/types";
-import { NoResult, VideoCard } from "@/components";
+import { NoResult, Upload, VideoCard } from "@/components";
+
 
 interface VideoProps {
   videos: Video[];
@@ -15,7 +16,10 @@ const Homepage = ({ videos }: VideoProps) => {
       <h2 className="w-full text-xl font-bold sticky top-0 bg-white shadow-cardShad p-6">
         Home
       </h2>
-      <div className="flex flex-col gap-10 videos h-full w-full">
+      <div className="flex flex-col gap-4 videos h-full w-full">
+        <div className="w-full flex items-start justify-start bg-white p-6">
+          <Upload />
+        </div>
         {videos.length > 0 ? (
           videos.map((video: Video) => (
             <VideoCard post={video} key={video._id} />
