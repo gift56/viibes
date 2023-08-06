@@ -6,7 +6,7 @@ const Upload = () => {
   const user = null;
   return (
     <div className="w-full flex flex-col items-start justify-start gap-4 shadow-paginationShad pb-2">
-      <div className="w-full flex items-center justify-start gap-5 p-6 border-b">
+      <div className="w-full flex items-center justify-start gap-5 p-6 pt-2 border-b">
         <img
           src={user ? "" : "/avatar.png"}
           alt="avatar"
@@ -20,7 +20,7 @@ const Upload = () => {
         </div>
       </div>
 
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex items-center justify-between px-4 lg:px-0">
         <span className="flex items-center justify-start gap-2 text-base font-medium cursor-pointer text-gray-500">
           <span>
             <RiVideoUploadLine size={25} />

@@ -16,7 +16,7 @@ const Homepage = ({ videos }: VideoProps) => {
       <h2 className="w-full text-xl font-bold sticky top-0 bg-white pt-6 px-4">
         Home
       </h2>
-      <div className="flex flex-col gap-4 videos h-full w-full">
+      <div className="flex flex-col gap-4 videos h-full w-full overflow-y-auto">
         <div className="w-full">
           <Upload />
         </div>
