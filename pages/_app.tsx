@@ -39,14 +39,14 @@ export default function App({ Component, pageProps }: AppProps) {
           content="Expore the fun in video sharing and Have a happy life"
         />
       </Head>
-      <main className="xl:w-[1200px] m-auto overflow-hidden h-[100vh] flex items-start justify-between">
-        <div className="flex-[1]">
+      <main className="xl:w-[1200px] m-auto overflow-hidden h-screen flex items-start justify-between flex-col lg:flex-row">
+        <div className="lg:flex-[1] w-full border-b lg:border-none">
           <LeftSideBar />
         </div>
         <div className="flex-[2]">
           <Component {...pageProps} />
         </div>
-        <div className="flex-[1]">
+        <div className="lg:flex-[1] hidden lg:flex">
           <RightSidebar />
         </div>
       </main>

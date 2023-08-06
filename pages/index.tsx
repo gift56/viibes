@@ -12,14 +12,14 @@ const Homepage = ({ videos }: VideoProps) => {
   return <div>Homepage</div>;
 };
 
-export const getServerSideProps = async () => {
-  const { data } = await axios.get("http://localhost:3000/api/post");
+// export const getServerSideProps = async () => {
+//   const { data } = await axios.get("http://localhost:3000/api/post");
 
-  return {
-    props: {
-      videos: data,
-    },
-  };
-};
+//   return {
+//     props: {
+//       videos: data,
+//     },
+//   };
+// };
 
 export default Homepage;
