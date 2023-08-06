@@ -58,19 +58,21 @@ const LeftSideBar = () => {
         </span>
       </div>
       <div className="w-full lg:flex flex-col h-[80vh] overflow-y-auto hidden">
-        <div className="xl:border-b-2 border-gray-200 xl:pb-2">
+        <div className="lg:border-b-2 border-gray-200 xl:pb-2">
           <Link href="/">
             <div className="flex items-center justify-center xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 hover:bg-primary p-3">
               <p className="text-2xl">
                 <AiFillHome />
               </p>
-              <span className="text-xl hidden xl:block">Follow Topics</span>
+              <span className="text-xl hidden lg:block">Follow Topics</span>
             </div>
           </Link>
         </div>
         <Discover />
         <Settings />
       </div>
+
+
 
       <div
         className={`${

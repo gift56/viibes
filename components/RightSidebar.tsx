@@ -40,8 +40,8 @@ const RightSidebar = () => {
           </button>
         </form>
       </div>
-      <div className="xl:border-b-2 border-gray-200 pb-4 w-full">
-        <p className="text-gray-500 font-semibold hidden m-3 mt-4 xl:block dark:text-white">
+      <div className="lg:border-b-2 border-gray-200 pb-4 w-full">
+        <p className="text-gray-500 font-semibold hidden m-3 mt-4 lg:block">
           Suggested Accounts
         </p>
         <div>
@@ -52,7 +52,7 @@ const RightSidebar = () => {
                 <div className="w-8 h-8">
                   <img src="" alt="" />
                 </div>
-                <div className="hidden xl:block">
+                <div className="hidden lg:block">
                   {/* <p className="flex gap-1 items-center text-md font-bold text-primary dark:text-gray-100 lowercase">
                     {user.userName.replace(" ", "")}{" "}
                     <GoVerified className="text-blue-400" />
