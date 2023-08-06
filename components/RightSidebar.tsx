@@ -1,10 +1,43 @@
-import React from "react";
+import { useState } from "react";
 import Footer from "./Footer";
 import Link from "next/link";
+import { BiSearch } from "react-icons/bi";
+import { useRouter } from "next/router";
 
 const RightSidebar = () => {
+  const [searchValue, setSearchValue] = useState("");
+  const router = useRouter();
+
+  const handleSearch = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    if (searchValue) {
+      router.push(`/search/${searchValue}`);
+    }
+  };
+
   return (
     <div className="flex flex-col items-start justify-start gap-4 h-screen py-5 w-full">
+      <div className="relative hidden lg:block">
+        <form
+          onSubmit={handleSearch}
+          className="absolute md:static top-10 left-20 bg-white dark:bg-[#1d2225]"
+        >
+          <input
+            type="text"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            className="bg-primary dark:bg-gray-900 dark:border-gray-800 p-3 md:text-md font-medium border-2 border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 w-[300px] md:w-[350px] rounded-full md:top-0"
+            placeholder="Search Videos and accounts"
+          />
+          <button
+            onClick={handleSearch}
+            className="absolute right-6 top-4 md:right-5 border-l-2 border-gray-300 pl-4 text-2xl text-gray-400"
+          >
+            <BiSearch />
+          </button>
+        </form>
+      </div>
       <div className="xl:border-b-2 border-gray-200 pb-4 w-full">
         <p className="text-gray-500 font-semibold hidden m-3 mt-4 xl:block dark:text-white">
           Suggested Accounts
