@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       boxShadow: {
         cardShad: "0px 14px 34px rgba(0, 0, 0, 0.05)",
+        paginationShad: "0px 48px 56px -25px rgba(100, 112, 122, 0.15)",
       },
     },
   },

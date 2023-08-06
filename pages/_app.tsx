@@ -40,7 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <div className="lg:flex-[1] w-full border-b lg:border-none">
           <LeftSideBar />
         </div>
-        <div className="flex-[2]">
+        <div className="lg:flex-[2] w-full">
           <Component {...pageProps} />
         </div>
         <div className="lg:flex-[1] hidden lg:flex">

@@ -13,11 +13,11 @@ const Homepage = ({ videos }: VideoProps) => {
 
   return (
     <div className="w-full flex flex-col items-start gap-4 h-screen overflow-y-auto overflow-x-hidden scrollbar-hide">
-      <h2 className="w-full text-xl font-bold sticky top-0 bg-white shadow-cardShad p-6">
+      <h2 className="w-full text-xl font-bold sticky top-0 bg-white pt-6 px-4">
         Home
       </h2>
       <div className="flex flex-col gap-4 videos h-full w-full">
-        <div className="w-full flex items-start justify-start bg-white p-6">
+        <div className="w-full">
           <Upload />
         </div>
         {videos.length > 0 ? (
