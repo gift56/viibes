@@ -5,15 +5,20 @@ import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import {
   BsFillPlayFill,
   BsFillPauseFill,
-  BsThreeDotsVertical,
+  BsThreeDots,
+  BsDownload,
+  BsFillTrash3Fill,
 } from "react-icons/bs";
 import Link from "next/link";
+import { MdOutlineVideoLibrary } from "react-icons/md";
+import { motion } from "framer-motion";
 
 interface Postprops {
   post: Video;
 }
 
 const VideoCard: NextPage<Postprops> = ({ post }) => {
+  const [dropDown, setDropDown] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [videoMuted, setVideoMuted] = useState(false);
@@ -97,9 +102,41 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
           </div>
         </div>
         <div className="relative">
-          <span className="cursor-pointer">
-            <BsThreeDotsVertical size={20} />
+          <span
+            onClick={() => setDropDown((prev) => !prev)}
+            className="cursor-pointer"
+          >
+            <BsThreeDots size={25} />
           </span>
+          <div className="w-[200px] bg-white border border-gray-400 flex flex-col items-start rounded-xl overflow-hidden">
+            <Link
+              href={`/details/${post._id}`}
+              className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 border-b border-gray-400 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
+            >
+              <span>
+                <MdOutlineVideoLibrary size={20} />
+              </span>
+              <span>Video Detail</span>
+            </Link>
+            <a
+              href={post.video.asset.url}
+              download
+              target="_blank"
+              rel="noreferrer noopener"
+              className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 border-b border-gray-400 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
+            >
+              <span>
+                <BsDownload size={20} />
+              </span>
+              <span>Download Video</span>
+            </a>
+            <div className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300">
+              <span>
+                <BsFillTrash3Fill size={20} />
+              </span>
+              <span>Delete Video</span>
+            </div>
+          </div>
         </div>
       </div>
 
