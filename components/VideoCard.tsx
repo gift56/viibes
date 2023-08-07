@@ -49,6 +49,18 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
     };
   }, []);
 
+  const handleMouseEnter = () => {
+    setIsHover(true);
+    currentVideoRef.current?.play();
+    setPlaying(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+    currentVideoRef.current?.pause();
+    setPlaying(false);
+  };
+
   return (
     <div className="flex flex-col pb-6 border-b-2 border-gray-200">
       <div>
@@ -81,12 +93,12 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
           </div>
         </div>
       </div>
-      <div className="flex gap-4 relative w-full items-center justify-center">
-        <div
-          className="rounded-3xl"
-          onMouseEnter={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
-        >
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="flex gap-4 relative w-full items-center justify-center"
+      >
+        <div className="rounded-3xl">
           <Link href={`/details/${post._id}`}>
             <video
               src={post.video.asset.url}
@@ -95,27 +107,28 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
               className="md:w-fit aspect-video w-[90%] mx-auto rounded-2xl cursor-pointer bg-gray-400"
             ></video>
           </Link>
-
-          <div className="absolute bottom-[7%] md:bottom-8 w-[90%] cursor-pointer left-[5%] sm:w-[70%] sm:left-[15%] lg:left-0 flex gap-10 items-end justify-between p-3 lg:w-full bg-black/30 h-[90%] rounded-3xl">
-            {playing ? (
-              <button onClick={onVideoPress}>
-                <BsFillPauseFill className="text-white text-2xl md:text-3xl lg:text-4xl" />
-              </button>
-            ) : (
-              <button onClick={onVideoPress}>
-                <BsFillPlayFill className="text-white text-2xl md:text-3xl lg:text-4xl" />
-              </button>
-            )}
-            {videoMuted ? (
-              <button onClick={() => setVideoMuted(false)}>
-                <HiVolumeOff className="text-white text-2xl md:text-3xl lg:text-4xl" />
-              </button>
-            ) : (
-              <button onClick={() => setVideoMuted(true)}>
-                <HiVolumeUp className="text-white text-2xl md:text-3xl lg:text-4xl" />
-              </button>
-            )}
-          </div>
+          {isHover && (
+            <div className="absolute bottom-[7%] md:bottom-8 w-[90%] cursor-pointer left-[5%] sm:w-[70%] sm:left-[15%] lg:left-0 flex gap-10 items-end justify-between p-3 lg:w-full bg-black/30 h-[90%] rounded-3xl">
+              {playing ? (
+                <button onClick={onVideoPress}>
+                  <BsFillPauseFill className="text-white text-2xl md:text-3xl lg:text-4xl" />
+                </button>
+              ) : (
+                <button onClick={onVideoPress}>
+                  <BsFillPlayFill className="text-white text-2xl md:text-3xl lg:text-4xl" />
+                </button>
+              )}
+              {videoMuted ? (
+                <button onClick={() => setVideoMuted(false)}>
+                  <HiVolumeOff className="text-white text-2xl md:text-3xl lg:text-4xl" />
+                </button>
+              ) : (
+                <button onClick={() => setVideoMuted(true)}>
+                  <HiVolumeUp className="text-white text-2xl md:text-3xl lg:text-4xl" />
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
