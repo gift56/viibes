@@ -18,7 +18,7 @@ interface Postprops {
 }
 
 const VideoCard: NextPage<Postprops> = ({ post }) => {
-  const [dropDown, setDropDown] = useState(false);
+  const [dropDown, setDropDown] = useState<any>(null);
   const [isHover, setIsHover] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [videoMuted, setVideoMuted] = useState(false);
@@ -70,6 +70,11 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
     setPlaying(false);
   };
 
+  const variants = {
+    open: { opacity: 1, scale: 1, transition: { duration: 0.2 } },
+    closed: { opacity: 0, scale: 0, transition: { duration: 0.2 } },
+  };
+
   return (
     <div className="flex flex-col pb-6 border-b-2 border-gray-200">
       <div className="flex items-center justify-between w-full px-3 lg:px-0">
@@ -103,12 +108,18 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
         </div>
         <div className="relative">
           <span
-            onClick={() => setDropDown((prev) => !prev)}
+            onClick={() => setDropDown(dropDown !== post._id ? post._id : null)}
             className="cursor-pointer"
           >
             <BsThreeDots size={25} />
           </span>
-          <div className="w-[200px] bg-white border border-gray-400 flex flex-col items-start rounded-xl overflow-hidden">
+          <motion.div
+            animate={dropDown === post._id ? "open" : "closed"}
+            variants={variants}
+            className={`w-[200px] bg-white border border-gray-400 flex-col items-start rounded-xl overflow-hidden absolute right-0 z-10 ${
+              dropDown === post._id ? "flex" : "hidden"
+            }`}
+          >
             <Link
               href={`/details/${post._id}`}
               className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 border-b border-gray-400 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
@@ -136,7 +147,7 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
               </span>
               <span>Delete Video</span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -146,14 +157,14 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
         className="flex gap-4 relative w-full items-center justify-center"
       >
         <div className="rounded-3xl">
-          <Link href={`/details/${post._id}`}>
+          <div>
             <video
               src={post.video.asset.url}
               loop
               ref={videoRef}
               className="md:w-fit aspect-video w-[90%] mx-auto rounded-2xl cursor-pointer bg-gray-400"
             ></video>
-          </Link>
+          </div>
           {isHover && (
             <div className="absolute bottom-[7%] md:bottom-8 w-[90%] cursor-pointer left-[5%] sm:w-[70%] sm:left-[15%] lg:left-0 flex gap-10 items-end justify-between p-3 lg:w-full bg-black/30 h-[90%] rounded-3xl">
               {playing ? (
