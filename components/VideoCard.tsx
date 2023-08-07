@@ -2,7 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { NextPage } from "next";
 import { Video } from "@/types";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
-import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
+import {
+  BsFillPlayFill,
+  BsFillPauseFill,
+  BsThreeDotsVertical,
+} from "react-icons/bs";
 import Link from "next/link";
 
 interface Postprops {
@@ -63,7 +67,7 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
 
   return (
     <div className="flex flex-col pb-6 border-b-2 border-gray-200">
-      <div>
+      <div className="">
         <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
           <div className="md:w-16 md:h-16 w-10 h-10">
             <Link href={`/profile/${post.postedBy._id}`}>
@@ -93,6 +97,7 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
           </div>
         </div>
       </div>
+
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
