@@ -67,7 +67,7 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
 
   return (
     <div className="flex flex-col pb-6 border-b-2 border-gray-200">
-      <div className="">
+      <div className="flex items-center justify-between w-full px-3">
         <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
           <div className="md:w-16 md:h-16 w-10 h-10">
             <Link href={`/profile/${post.postedBy._id}`}>
@@ -95,6 +95,11 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
               {post.caption}
             </p>
           </div>
+        </div>
+        <div className="relative">
+          <span className="cursor-pointer">
+            <BsThreeDotsVertical size={20} />
+          </span>
         </div>
       </div>
 
