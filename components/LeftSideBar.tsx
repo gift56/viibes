@@ -7,9 +7,12 @@ import { HiBars3BottomRight } from "react-icons/hi2";
 import { MdClose } from "react-icons/md";
 import { useRouter } from "next/router";
 import { topics } from "@/utils/constants";
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from "@react-oauth/google";
+import useAuthStore from "@/store";
+import { createOrGetGoogleUser } from "@/utils";
 
 const LeftSideBar = () => {
+  const { userProfile, addUser } = useAuthStore();
   const [mobileNav, setMobileNav] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -73,8 +76,6 @@ const LeftSideBar = () => {
         <Settings />
       </div>
 
-
-
       <div
         className={`${
           mobileNav ? "left-0" : "-left-full"
@@ -90,6 +91,14 @@ const LeftSideBar = () => {
             </span>
           </div>
           <nav className="w-full flex items-start justify-start flex-col gap-6">
+            {userProfile ? (
+              <div></div>
+            ) : (
+              <GoogleLogin
+                onSuccess={(res) => createOrGetGoogleUser(res, addUser)}
+                onError={() => console.log("error")}
+              />
+            )}
             <div className="w-full border-b pb-4">Sign Up button</div>
             <div className="w-full flex flex-col h-[80vh] overflow-y-auto">
               <div className="xl:border-b-2 border-gray-200 xl:pb-2">
