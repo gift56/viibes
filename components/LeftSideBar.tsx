@@ -74,6 +74,18 @@ const LeftSideBar = () => {
         </div>
         <Discover />
         <Settings />
+        <div className="mt-4 w-full">
+          {userProfile ? (
+            <div>Logged In</div>
+          ) : (
+            <div className="w-full border-b pb-4 px-4">
+              <GoogleLogin
+                onSuccess={(res) => createOrGetGoogleUser(res, addUser)}
+                onError={() => console.log("error")}
+              />
+            </div>
+          )}
+        </div>
       </div>
 
       <div
@@ -92,14 +104,15 @@ const LeftSideBar = () => {
           </div>
           <nav className="w-full flex items-start justify-start flex-col gap-6">
             {userProfile ? (
-              <div></div>
+              <div>Logged In</div>
             ) : (
-              <GoogleLogin
-                onSuccess={(res) => createOrGetGoogleUser(res, addUser)}
-                onError={() => console.log("error")}
-              />
+              <div className="w-full border-b pb-4">
+                <GoogleLogin
+                  onSuccess={(res) => createOrGetGoogleUser(res, addUser)}
+                  onError={() => console.log("error")}
+                />
+              </div>
             )}
-            <div className="w-full border-b pb-4">Sign Up button</div>
             <div className="w-full flex flex-col h-[80vh] overflow-y-auto">
               <div className="xl:border-b-2 border-gray-200 xl:pb-2">
                 <Link href="/">
