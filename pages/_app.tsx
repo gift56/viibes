@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
           content="Expore the fun in video sharing and Have a happy life"
         />
       </Head>
-      <GoogleOAuthProvider clientId="">
+      <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_GOGGLE_API_TOKEN}`}>
         <main className="xl:w-[1200px] m-auto overflow-hidden h-screen flex items-start justify-between flex-col lg:flex-row">
           <div className="lg:flex-[1] w-full border-b lg:border-none">
             <LeftSideBar />
