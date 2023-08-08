@@ -3,11 +3,28 @@ import { persist } from "zustand/middleware";
 import axios from "axios";
 import { BASE_URL } from "../utils";
 
-const authStore = (set: any) => ({
+interface UserProfile {
+  _id: string;
+  _type: string;
+  userName: string;
+  image: string;
+}
+
+interface AuthStore {
+  userProfile: UserProfile | null;
+  allUsers: any[]; // Update this type to match your actual user data structure
+
+  addUser: (user: UserProfile) => void;
+  removeUser: () => void;
+
+  fetchAllUsers: () => Promise<void>;
+}
+
+const authStore = (set: (updater: Partial<AuthStore>) => void) => ({
   userProfile: null,
   allUsers: [],
 
-  addUser: (user: any) => set({ userProfile: user }),
+  addUser: (user: UserProfile) => set({ userProfile: user }),
   removeUser: () => set({ userProfile: null }),
 
   fetchAllUsers: async () => {
@@ -18,7 +35,7 @@ const authStore = (set: any) => ({
 });
 
 const useAuthStore = create(
-  persist(authStore, {
+  persist<AuthStore>(authStore, {
     name: "auth",
   })
 );

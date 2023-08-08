@@ -9,7 +9,6 @@ interface VideoProps {
 }
 
 const Homepage = ({ videos }: VideoProps) => {
-  console.log(videos);
 
   return (
     <div className="w-full flex flex-col items-start gap-4 h-screen overflow-y-auto overflow-x-hidden scrollbar-hide">
