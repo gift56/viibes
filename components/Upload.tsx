@@ -12,6 +12,7 @@ const Upload = () => {
       {userProfile && (
         <div className="w-full flex flex-col items-start justify-start gap-4 shadow-paginationShad pb-2">
           <div className="w-full flex items-center justify-start gap-5 p-6 pt-2 border-b">
+          {/* <Link href={`/profile/${post.postedBy._id}`}></Link> */}
             <img
               src={userProfile ? userProfile?.image : "/avatar.png"}
               alt="avatar"
