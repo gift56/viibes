@@ -120,7 +120,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
               onClick={() => {
                 setShow(false);
               }}
-              className="w-12 h-12 hover:bg-gray-500 flex items-center justify-center rounded-lg text-red-500 cursor-pointer hover:text-white transition-all duration-300"
+              className="w-12 h-12 hover:bg-gray-400 flex items-center justify-center rounded-lg text-red-500 cursor-pointer hover:text-white transition-all duration-300"
             >
               <MdClose
                 size={20}
@@ -131,7 +131,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
           <div className="w-full grid grid-cols-1 justify-start items-center md:grid-cols-2 md:justify-between gap-6">
             <div className="w-full">
               <div
-                className={`border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-none w-[260px] h-[400px] cursor-pointer hover:border-red-300 hover:bg-gray-100 transition-all ${
+                className={`border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-none w-[260px] h-[400px] cursor-pointer hover:bg-gray-100 transition-all ${
                   videoAsset?.url ? "p-0" : "p-10"
                 }`}
               >
