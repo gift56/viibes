@@ -30,7 +30,7 @@ img {
 }
 
 select {
-  background-image: url(/public/selectIcon.svg);
+  background-image: url(/selectIcon.svg);
   background-repeat: no-repeat;
   background-position: right 16px center;
   appearance: none;
