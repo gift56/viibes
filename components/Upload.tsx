@@ -1,7 +1,6 @@
 import useAuthStore from "@/store";
 import React from "react";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
-import { RiVideoUploadLine } from "react-icons/ri";
 
 const Upload = () => {
   const { userProfile } = useAuthStore();

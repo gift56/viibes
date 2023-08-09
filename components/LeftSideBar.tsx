@@ -10,6 +10,7 @@ import { topics } from "@/utils/constants";
 import { GoogleLogin } from "@react-oauth/google";
 import useAuthStore from "@/store";
 import { createOrGetGoogleUser } from "@/utils";
+import { FiChevronsDown } from "react-icons/fi";
 
 const LeftSideBar = () => {
   const { userProfile, addUser } = useAuthStore();
@@ -76,7 +77,7 @@ const LeftSideBar = () => {
         <Settings />
         <div className="mt-4 w-full">
           {userProfile ? (
-            <div className="px-5 flex items-center justify-start gap-4">
+            <div className="px-5 flex items-center justify-start gap-4 cursor-pointer">
               <img
                 src={userProfile?.image}
                 alt={userProfile?.userName}
@@ -84,6 +85,9 @@ const LeftSideBar = () => {
               />
               <span className="text-lg font-medium text-gray-700">
                 {userProfile?.userName}
+              </span>
+              <span>
+                <FiChevronsDown size={20} />
               </span>
             </div>
           ) : (
