@@ -200,17 +200,17 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                 type="text"
                 value={caption}
                 onChange={(e) => setCaption(e.target.value)}
-                className="p-2 rounded outline-none text-md border-2 border-gray-200 dark:bg-gray-600 dark:border-gray-500"
+                className="p-2 rounded outline-none text-md border-2 border-gray-200"
               />
               <label className="text-md font-medium">Choose a Catergory</label>
               <select
-                className="p-2 rounded outline-none text-md capitalize border-2 border-gray-200 dark:bg-gray-600 dark:border-gray-500 lg:p-4 cursor-pointer"
+                className="p-2 rounded outline-none text-md capitalize border-2 border-gray-200 lg:p-4 cursor-pointer"
                 onChange={(e) => setCartegory(e.target.value)}
               >
                 {topics.map((topic) => (
                   <option
                     key={topic.name}
-                    className="capitalize outline-none bg-white dark:bg-gray-600 dark:text-gray-100 text-gray-700 text-md p-2 hover:bg-slate-300"
+                    className="capitalize outline-none bg-white text-gray-700 text-md p-2 hover:bg-slate-300"
                     value={topic.name}
                   >
                     {topic.name}
@@ -221,7 +221,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                 <button
                   onClick={() => router.push("/")}
                   type="button"
-                  className="text-md border-2 font-medium p-2 rounded  w-28 lg:w-44 outline-none border-gray-300"
+                  className="text-md border-2 font-medium p-2 rounded w-28 lg:w-44 outline-none border-gray-300"
                 >
                   Discard
                 </button>
