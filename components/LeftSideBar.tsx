@@ -34,6 +34,13 @@ const LeftSideBar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const resetState = () => {
+      setLogOut(false);
+    };
+    resetState();
+  }, [!userProfile]);
+
   const router = useRouter();
 
   const { topic } = router.query;
@@ -79,20 +86,28 @@ const LeftSideBar = () => {
         <div className="mt-4 w-full">
           {userProfile ? (
             <div className="w-full relative">
-              <div className="px-5 flex items-center justify-start gap-4 cursor-pointer">
+              <div
+                onClick={() => setLogOut((prev) => !prev)}
+                className="px-5 flex items-center justify-start gap-4 cursor-pointer"
+              >
                 <img
                   src={userProfile?.image}
                   alt={userProfile?.userName}
-                  className="w-10 h-10 rounded-full select-none "
+                  className="w-10 h-10 rounded-full select-none"
                 />
                 <span className="text-lg font-medium text-gray-700">
                   {userProfile?.userName}
                 </span>
                 <span>
-                  <FiChevronDown size={25} />
+                  <FiChevronDown
+                    size={25}
+                    className={`${
+                      logOut ? "rotate-180" : ""
+                    } transition-all duration-200`}
+                  />
                 </span>
               </div>
-              
+
               <button
                 type="button"
                 className={`p-5 items-center justify-start gap-6 text-lg font-medium text-red-600 ${
