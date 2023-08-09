@@ -54,7 +54,7 @@ const LeftSideBar = () => {
   // "xl:border-2 hover:bg-primary dark:hover:bg-gray-800 xl:border-gray-300 dark:hover:xl:border-gray-600 px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer text-black dark:text-gray-100";
 
   return (
-    <nav className="flex flex-col items-start justify-start gap-4 lg:h-screen py-5 w-full px-4">
+    <nav className="flex flex-col items-start justify-start gap-4 lg:h-screen py-5 w-full lg:px-4">
       <div className="flex items-center gap-4 justify-between px-4 w-full">
         <Link href="/">
           <div className="w-full sticky top-2 z-10 select-none">
@@ -152,14 +152,14 @@ const LeftSideBar = () => {
               <div className="w-full relative">
                 <div
                   onClick={() => setLogOut((prev) => !prev)}
-                  className="px-5 flex items-center justify-start gap-4 cursor-pointer"
+                  className="flex items-center justify-start gap-4 cursor-pointer"
                 >
                   <img
                     src={userProfile?.image}
                     alt={userProfile?.userName}
                     className="w-10 h-10 rounded-full select-none"
                   />
-                  <span className="text-lg font-medium text-gray-700">
+                  <span className="text-base font-medium text-gray-700">
                     {userProfile?.userName}
                   </span>
                   <span>
