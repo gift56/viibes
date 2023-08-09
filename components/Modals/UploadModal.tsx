@@ -91,7 +91,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
         <motion.div
           animate={show ? "open" : "open"}
           variants={variants}
-          className="lg:w-[850px] w-[90%] bg-white rounded-lg flex flex-col items-start justify-between gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4"
+          className="lg:w-[850px] w-[90%] bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4"
         >
           <div className="w-full flex items-center justify-between gap-4">
             <div className="flex flex-col items-start justify-start w-full">
@@ -112,19 +112,84 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
               />
             </span>
           </div>
+          <div className="w-full grid grid-cols-1 justify-start items-center md:grid-cols-2 md:justify-between gap-6">
+            <div className="w-full">
+              <div
+                className={`border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-none w-[260px] h-[400px] cursor-pointer hover:border-red-300 hover:bg-gray-100 transition-all ${
+                  videoAsset?.url ? "p-0" : "p-10"
+                }`}
+              >
+                {isLoading ? (
+                  <p>Uploading......</p>
+                ) : (
+                  <div>
+                    {videoAsset ? (
+                      <div className="w-full">
+                        <video
+                          src={videoAsset?.url}
+                          loop
+                          controls
+                          className="rounded-xl h-[400px] bg-black w-full"
+                        ></video>
+                      </div>
+                    ) : (
+                      <label className="cursor-pointer">
+                        <div className="flex flex-col items-center justify-center">
+                          <p className="font-bold text-xl">
+                            <FaCloudDownloadAlt className="text-gray-300 text-6xl" />
+                          </p>
+                          <p className="font-semibold text-xl">Upload Video</p>
+                        </div>
+                        <p className="text-gray-400 text-center mt-10 text-sm leading-10">
+                          MP4 or WebM or ogg <br />
+                          720x1280 or higher <br />
+                          Up to 10 minutes <br />
+                          Less than 2GB
+                        </p>
+                        <p className="bg-[#f51997] text-center mt-10 rounded text-white text-md font-medium p-2 w-25 outline-none">
+                          Select File
+                        </p>
+                        <input
+                          type="file"
+                          name="upload-video"
+                          onChange={uploadVideo}
+                          className="w-0 h-0 hidden"
+                          accept="video/mp4, video/webm, video/ogg"
+                          id="file"
+                        />
+                      </label>
+                    )}
+                  </div>
+                )}
+              </div>
+              {wrongFileType && (
+                <p className="font-semibold w-[250px] text-center text-red-400 text-xl mt-4">
+                  Please select a video file
+                </p>
+              )}
+              {videoAsset?.url && (
+                <label
+                  htmlFor="file"
+                  className="bg-[#f51997] mt-5 rounded text-white text-md font-medium py-2 w-fit px-10 cursor-pointer"
+                >
+                  Change Video
+                </label>
+              )}
+            </div>
+          </div>
         </motion.div>
       ) : (
         <motion.div
-          animate={show ? "open" : "open"}
+          animate={show ? "open" : "closed"}
           variants={variants}
-          className="w-fit bg-white rounded-lg flex items-center justify-center flex-col gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4"
+          className="w-fit bg-white rounded-lg flex items-center justify-center flex-col gap-3 transition-all duration-300 overflow-y-auto p-4"
         >
-          <h2 className="text-2xl font-medium text-gray-800">
+          <h2 className="text-2xl font-semibold text-gray-800">
             Connect with <b>Viibe</b>
           </h2>
-          <p className="text-sm font-normal text-gray-600">
-            Join Viibe, the fastest and easiest way to make upload an share the
-            fun with friends and the world through videos
+          <p className="text-sm md:text-base font-normal text-gray-600 text-center">
+            Join Viibe, the fastest and easiest way to make upload and <br />{" "}
+            share the fun with friends and the world through videos
           </p>
           <ConnectAccount />
         </motion.div>
