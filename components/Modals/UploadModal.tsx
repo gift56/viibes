@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import axios from "axios";
@@ -19,6 +19,7 @@ interface ModalProp {
 
 const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
   const [isLoading, setIsloading] = useState(false);
+  const [dots, setDots] = useState(".");
   const [wrongFileType, setWrongFileType] = useState(false);
   const [videoAsset, setVideoAsset] = useState<
     SanityAssetDocument | undefined
@@ -81,6 +82,21 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
     closed: { opacity: 0, scale: 0, transition: { duration: 0.2 } },
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDots(prevDots => {
+        if (prevDots === '...') {
+          return '.';
+        } else {
+          return prevDots + '.';
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isLoading]);
+
+
   return (
     <div
       className={`fixed top-0 right-0 w-full h-full bg-[#00000085] z-40 place-items-center flex justify-center transition-all duration-500 overflow-auto ${
@@ -120,7 +136,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                 }`}
               >
                 {isLoading ? (
-                  <p>Uploading......</p>
+                  <p>Uploading{dots}</p>
                 ) : (
                   <div>
                     {videoAsset ? (
@@ -167,10 +183,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                 </p>
               )}
               {videoAsset?.url && (
-                <label
-                  htmlFor="file"
-                  className="bg-[#f51997] mt-5 rounded text-white text-md font-medium py-2 w-fit px-10 cursor-pointer block"
-                >
+                <label className="bg-[#f51997] mt-5 rounded text-white text-md font-medium py-2 w-fit px-10 cursor-pointer block">
                   Change Video
                   <input
                     type="file"
