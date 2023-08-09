@@ -54,7 +54,7 @@ const LeftSideBar = () => {
   // "xl:border-2 hover:bg-primary dark:hover:bg-gray-800 xl:border-gray-300 dark:hover:xl:border-gray-600 px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer text-black dark:text-gray-100";
 
   return (
-    <nav className="flex flex-col items-start justify-start gap-4 lg:h-screen py-5 w-full">
+    <nav className="flex flex-col items-start justify-start gap-4 lg:h-screen py-5 w-full px-4">
       <div className="flex items-center gap-4 justify-between px-4 w-full">
         <Link href="/">
           <div className="w-full sticky top-2 z-10 select-none">
@@ -71,7 +71,7 @@ const LeftSideBar = () => {
         </span>
       </div>
       <div className="w-full lg:flex flex-col h-[90vh] overflow-y-auto hidden">
-        <div className="lg:border-b-2 border-gray-200 xl:pb-2">
+        <div className="lg:border-b-2 border-gray-200 xl:pb-2 mx-3">
           <Link href="/">
             <div className="flex items-center justify-center xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 hover:bg-primary p-3">
               <p className="text-2xl">
