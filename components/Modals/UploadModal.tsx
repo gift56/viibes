@@ -155,7 +155,6 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                           onChange={uploadVideo}
                           className="w-0 h-0 hidden"
                           accept="video/mp4, video/webm, video/ogg"
-                          id="file"
                         />
                       </label>
                     )}
@@ -173,6 +172,13 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                   className="bg-[#f51997] mt-5 rounded text-white text-md font-medium py-2 w-fit px-10 cursor-pointer block"
                 >
                   Change Video
+                  <input
+                    type="file"
+                    name="upload-video"
+                    onChange={uploadVideo}
+                    className="w-0 h-0 hidden"
+                    accept="video/mp4, video/webm, video/ogg"
+                  />
                 </label>
               )}
             </div>
