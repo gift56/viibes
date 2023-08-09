@@ -166,11 +166,11 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
               src={post.video.asset.url}
               loop
               ref={videoRef}
-              className="md:w-fit aspect-video w-[90%] mx-auto rounded-2xl cursor-pointer bg-gray-400"
+              className="md:w-fit aspect-video w-[90%] mx-auto rounded-2xl cursor-pointer bg-gray-300"
             ></video>
           </div>
           {isHover && (
-            <div className="absolute bottom-[7%] md:bottom-8 w-[90%] cursor-pointer left-[5%] sm:w-[70%] sm:left-[15%] lg:left-0 lg:bottom-0 flex gap-10 items-end justify-between p-3 lg:w-full bg-black/30 h-full rounded-2xl">
+            <div className="absolute bottom-[7%] md:bottom-8 w-[90%] cursor-pointer left-[5%] sm:w-[70%] sm:left-[15%] lg:left-0 lg:bottom-0 flex gap-10 items-end justify-between p-3 lg:w-full bg-black/20 h-full rounded-2xl">
               {playing ? (
                 <button onClick={onVideoPress}>
                   <BsFillPauseFill className="text-white text-2xl md:text-3xl lg:text-4xl" />
