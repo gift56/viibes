@@ -84,18 +84,17 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDots(prevDots => {
-        if (prevDots === '...') {
-          return '.';
+      setDots((prevDots) => {
+        if (prevDots === "...") {
+          return ".";
         } else {
-          return prevDots + '.';
+          return prevDots + ".";
         }
       });
     }, 1000);
 
     return () => clearInterval(interval);
   }, [isLoading]);
-
 
   return (
     <div
@@ -194,6 +193,47 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                   />
                 </label>
               )}
+            </div>
+            <div className="flex flex-col gap-3 pb-10 w-full lg:w-max">
+              <label className="text-md font-medium">Caption</label>
+              <input
+                type="text"
+                value={caption}
+                onChange={(e) => setCaption(e.target.value)}
+                className="p-2 rounded outline-none text-md border-2 border-gray-200 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label className="text-md font-medium">Choose a Catergory</label>
+              <select
+                className="p-2 rounded outline-none text-md capitalize border-2 border-gray-200 dark:bg-gray-600 dark:border-gray-500 lg:p-4 cursor-pointer"
+                onChange={(e) => setCartegory(e.target.value)}
+              >
+                {topics.map((topic) => (
+                  <option
+                    key={topic.name}
+                    className="capitalize outline-none bg-white dark:bg-gray-600 dark:text-gray-100 text-gray-700 text-md p-2 hover:bg-slate-300"
+                    value={topic.name}
+                  >
+                    {topic.name}
+                  </option>
+                ))}
+              </select>
+              <div className="flex gap-6 mt-10">
+                <button
+                  onClick={() => router.push("/")}
+                  type="button"
+                  className="text-md border-2 font-medium p-2 rounded  w-28 lg:w-44 outline-none border-gray-300"
+                >
+                  Discard
+                </button>
+
+                <button
+                  onClick={handlePost}
+                  type="button"
+                  className="text-md border-2 font-medium p-2 rounded  w-28 lg:w-44 outline-none bg-[#f51997] text-white border-[#f51997]"
+                >
+                  Post
+                </button>
+              </div>
             </div>
           </div>
         </motion.div>
