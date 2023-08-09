@@ -87,7 +87,7 @@ const LeftSideBar = () => {
                 {userProfile?.userName}
               </span>
               <span>
-                <FiChevronDown size={20} />
+                <FiChevronDown size={25} />
               </span>
             </div>
           ) : (

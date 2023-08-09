@@ -12,12 +12,14 @@ import {
 import Link from "next/link";
 import { MdOutlineVideoLibrary } from "react-icons/md";
 import { motion } from "framer-motion";
+import useAuthStore from "@/store";
 
 interface Postprops {
   post: Video;
 }
 
 const VideoCard: NextPage<Postprops> = ({ post }) => {
+  const { userProfile } = useAuthStore();
   const [dropDown, setDropDown] = useState<any>(null);
   const [isHover, setIsHover] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -129,24 +131,26 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
               </span>
               <span>Video Detail</span>
             </Link>
-            <a
-              href={post.video.asset.url}
-              download
-              target="_blank"
-              rel="noreferrer noopener"
-              className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 border-b border-gray-400 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
-            >
-              <span>
-                <BsDownload size={20} />
-              </span>
-              <span>Download Video</span>
-            </a>
-            <div className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300">
+            {userProfile && (
+              <a
+                href={post.video.asset.url}
+                download
+                target="_blank"
+                rel="noreferrer noopener"
+                className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 border-b border-gray-400 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
+              >
+                <span>
+                  <BsDownload size={20} />
+                </span>
+                <span>Download Video</span>
+              </a>
+            )}
+            {/* <div className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300">
               <span>
                 <BsFillTrash3Fill size={20} />
               </span>
               <span>Delete Video</span>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
