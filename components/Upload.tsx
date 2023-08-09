@@ -20,6 +20,13 @@ const Upload = () => {
             <HiOutlinePencilSquare />
           </span>
         </div>
+        <button
+          //   onClick={handlePost}
+          type="button"
+          className="text-base border-2 font-medium p-2 rounded-lg w-fit px-8 outline-none bg-[#f51997] text-white border-[#f51997]"
+        >
+          Upload
+        </button>
       </div>
     </div>
   );
