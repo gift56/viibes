@@ -10,7 +10,7 @@ import { topics } from "@/utils/constants";
 import { GoogleLogin } from "@react-oauth/google";
 import useAuthStore from "@/store";
 import { createOrGetGoogleUser } from "@/utils";
-import { FiChevronsDown } from "react-icons/fi";
+import { FiChevronDown } from "react-icons/fi";
 
 const LeftSideBar = () => {
   const { userProfile, addUser } = useAuthStore();
@@ -87,7 +87,7 @@ const LeftSideBar = () => {
                 {userProfile?.userName}
               </span>
               <span>
-                <FiChevronsDown size={20} />
+                <FiChevronDown size={20} />
               </span>
             </div>
           ) : (
