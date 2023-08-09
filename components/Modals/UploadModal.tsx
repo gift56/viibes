@@ -74,6 +74,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
       };
       await axios.post(`${BASE_URL}/api/post`, document);
       setShow(false);
+      router.push("/");
     }
   };
 
