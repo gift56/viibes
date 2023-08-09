@@ -117,7 +117,19 @@ const LeftSideBar = () => {
           </div>
           <nav className="w-full flex items-start justify-start flex-col gap-6">
             {userProfile ? (
-              <div>Logged In</div>
+              <div className="px-5 flex items-center justify-start gap-4 cursor-pointer">
+                <img
+                  src={userProfile?.image}
+                  alt={userProfile?.userName}
+                  className="w-10 h-10 rounded-full select-none "
+                />
+                <span className="text-lg font-medium text-gray-700">
+                  {userProfile?.userName}
+                </span>
+                <span>
+                  <FiChevronDown size={25} />
+                </span>
+              </div>
             ) : (
               <div className="w-full border-b pb-4">
                 <GoogleLogin

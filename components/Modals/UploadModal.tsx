@@ -6,7 +6,7 @@ interface ModalProp {
   setChange?: any;
 }
 
-const UploadModal = () => {
+const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
   return <div>UploadModal</div>;
 };
 

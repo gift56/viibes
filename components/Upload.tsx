@@ -1,9 +1,11 @@
 import useAuthStore from "@/store";
-import React from "react";
+import React, { useState } from "react";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
+import UploadModal from "./Modals/UploadModal";
 
 const Upload = () => {
   const { userProfile } = useAuthStore();
+  const [uploadOpen, setUploadOpen] = useState(false);
 
   return (
     <>
@@ -22,7 +24,7 @@ const Upload = () => {
               </span>
             </div>
             <button
-              //   onClick={handlePost}
+              onClick={() => setUploadOpen(true)}
               type="button"
               className="text-base border-2 font-medium p-2 rounded-lg w-fit px-8 outline-none bg-[#f51997] text-white border-[#f51997]"
             >
@@ -31,6 +33,7 @@ const Upload = () => {
           </div>
         </div>
       )}
+      <UploadModal show={uploadOpen} setShow={setUploadOpen} />
     </>
   );
 };
