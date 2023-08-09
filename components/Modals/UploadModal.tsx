@@ -170,7 +170,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
               {videoAsset?.url && (
                 <label
                   htmlFor="file"
-                  className="bg-[#f51997] mt-5 rounded text-white text-md font-medium py-2 w-fit px-10 cursor-pointer"
+                  className="bg-[#f51997] mt-5 rounded text-white text-md font-medium py-2 w-fit px-10 cursor-pointer block"
                 >
                   Change Video
                 </label>
