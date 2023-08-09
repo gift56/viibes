@@ -9,6 +9,7 @@ import { client } from "@/utils/client";
 import { BASE_URL } from "@/utils";
 import { motion } from "framer-motion";
 import { MdClose } from "react-icons/md";
+import { ConnectAccount } from "..";
 
 interface ModalProp {
   show: boolean;
@@ -125,6 +126,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
             Join Viibe, the fastest and easiest way to make upload an share the
             fun with friends and the world through videos
           </p>
+          <ConnectAccount />
         </motion.div>
       )}
     </div>
