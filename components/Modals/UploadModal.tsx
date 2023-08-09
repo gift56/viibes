@@ -6,6 +6,7 @@ import useAuthStore from "@/store";
 import { SanityAssetDocument } from "@sanity/client";
 import { topics } from "@/utils/constants";
 import { client } from "@/utils/client";
+import { BASE_URL } from "@/utils";
 
 interface ModalProp {
   show: boolean;
@@ -44,6 +45,31 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
     } else {
       setIsloading(false);
       setWrongFileType(true);
+    }
+  };
+
+  const handlePost = async () => {
+    if (caption && videoAsset?._id && cartegory) {
+      setSavingPost(true);
+      const document = {
+        _type: "post",
+        caption,
+        video: {
+          _type: "file",
+          asset: {
+            _type: "reference",
+            _ref: videoAsset?._id,
+          },
+        },
+        userId: userProfile?._id,
+        postedBy: {
+          _type: "postedBy",
+          _ref: userProfile?._id,
+        },
+        topic: cartegory,
+      };
+      await axios.post(`${BASE_URL}/api/post`, document);
+      setShow(false);
     }
   };
 
