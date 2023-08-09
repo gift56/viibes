@@ -99,12 +99,12 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
   return (
     <div
       className={`fixed top-0 right-0 w-full h-full bg-[#00000085] z-40 place-items-center flex justify-center transition-all duration-500 overflow-auto ${
-        show ? "flex" : "flex"
+        show ? "flex" : "hidden"
       }`}
     >
       {userProfile ? (
         <motion.div
-          animate={show ? "open" : "open"}
+          animate={show ? "open" : "closed"}
           variants={variants}
           className="lg:w-[850px] w-[90%] bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4"
         >
