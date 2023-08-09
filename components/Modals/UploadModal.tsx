@@ -243,6 +243,19 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
           variants={variants}
           className="w-fit bg-white rounded-lg flex items-center justify-center flex-col gap-3 transition-all duration-300 overflow-y-auto p-4"
         >
+          <div className="w-full flex items-center justify-center">
+            <span
+              onClick={() => {
+                setShow(false);
+              }}
+              className="w-12 h-12 hover:bg-gray-400 flex items-center justify-center rounded-lg text-red-500 cursor-pointer hover:text-white transition-all duration-300"
+            >
+              <MdClose
+                size={20}
+                className="hover:rotate-180 transition-all duration-300"
+              />
+            </span>
+          </div>
           <h2 className="text-2xl font-semibold text-gray-800">
             Connect with <b>Viibe</b>
           </h2>
