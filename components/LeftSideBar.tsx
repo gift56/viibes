@@ -1,21 +1,22 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { AiFillHome } from "react-icons/ai";
+import { AiFillHome, AiOutlineLogout } from "react-icons/ai";
 import Discover from "./Discover";
 import Settings from "./Settings";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import { MdClose } from "react-icons/md";
 import { useRouter } from "next/router";
 import { topics } from "@/utils/constants";
-import { GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import useAuthStore from "@/store";
 import { createOrGetGoogleUser } from "@/utils";
 import { FiChevronDown } from "react-icons/fi";
 
 const LeftSideBar = () => {
-  const { userProfile, addUser } = useAuthStore();
+  const { userProfile, addUser, removeUser } = useAuthStore();
   const [mobileNav, setMobileNav] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+  const [logOut, setLogOut] = useState(false);
 
   useEffect(() => {
     const handleClickOutside: EventListener = (event) => {
@@ -62,7 +63,7 @@ const LeftSideBar = () => {
           {mobileNav === false && <HiBars3BottomRight size={30} />}
         </span>
       </div>
-      <div className="w-full lg:flex flex-col h-[80vh] overflow-y-auto hidden">
+      <div className="w-full lg:flex flex-col h-[90vh] overflow-y-auto hidden">
         <div className="lg:border-b-2 border-gray-200 xl:pb-2">
           <Link href="/">
             <div className="flex items-center justify-center xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 hover:bg-primary p-3">
@@ -77,18 +78,34 @@ const LeftSideBar = () => {
         <Settings />
         <div className="mt-4 w-full">
           {userProfile ? (
-            <div className="px-5 flex items-center justify-start gap-4 cursor-pointer">
-              <img
-                src={userProfile?.image}
-                alt={userProfile?.userName}
-                className="w-10 h-10 rounded-full select-none "
-              />
-              <span className="text-lg font-medium text-gray-700">
-                {userProfile?.userName}
-              </span>
-              <span>
-                <FiChevronDown size={25} />
-              </span>
+            <div className="w-full relative">
+              <div className="px-5 flex items-center justify-start gap-4 cursor-pointer">
+                <img
+                  src={userProfile?.image}
+                  alt={userProfile?.userName}
+                  className="w-10 h-10 rounded-full select-none "
+                />
+                <span className="text-lg font-medium text-gray-700">
+                  {userProfile?.userName}
+                </span>
+                <span>
+                  <FiChevronDown size={25} />
+                </span>
+              </div>
+              
+              <button
+                type="button"
+                className={`p-5 items-center justify-start gap-6 text-lg font-medium text-red-600 ${
+                  logOut ? "flex" : "hidden"
+                } transition-all`}
+                onClick={() => {
+                  googleLogout();
+                  removeUser();
+                }}
+              >
+                <AiOutlineLogout color="red" fontSize={25} />
+                <span>Log out</span>
+              </button>
             </div>
           ) : (
             <div className="w-full border-b pb-4 px-4">
