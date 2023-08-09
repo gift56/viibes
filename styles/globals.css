@@ -28,3 +28,11 @@ img {
   -webkit-user-drag: none;
   user-select: none;
 }
+
+select {
+  background-image: url(/public/selectIcon.svg);
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  appearance: none;
+  cursor: pointer;
+}
