@@ -133,7 +133,7 @@ const LeftSideBar = () => {
         </div>
       </div>
 
-
+      {/* MOBILE NAV */}
       <div
         className={`${
           mobileNav ? "left-0" : "-left-full"
