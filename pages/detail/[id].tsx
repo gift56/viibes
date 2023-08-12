@@ -8,13 +8,63 @@ import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import axios from "axios";
 import { BASE_URL } from "@/utils";
 import { Video } from "@/types";
+import useAuthStore from "@/store";
 
 interface PostProps {
   postDetails: Video;
 }
 
 const VideoDetail = ({ postDetails }: PostProps) => {
-  
+  const [post, setPost] = useState(postDetails);
+  const [playing, setPlaying] = useState(false);
+  const [videoMuted, setVideoMuted] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const router = useRouter();
+  const { userProfile } = useAuthStore();
+  const [comment, setComment] = useState("");
+  const [postingComment, setPostingComment] = useState(false);
+
+  const onVideoClick = () => {
+    if (playing) {
+      videoRef?.current?.pause();
+      setPlaying(false);
+    } else {
+      videoRef?.current?.play();
+      setPlaying(true);
+    }
+  };
+
+  useEffect(() => {
+    if (post && videoRef?.current) {
+      videoRef.current.muted = videoMuted;
+    }
+  }, [post, videoMuted]);
+
+  const handleLike = async (like: boolean) => {
+    if (userProfile) {
+      const { data } = await axios.put(`${BASE_URL}/api/like`, {
+        userId: userProfile._id,
+        postId: post._id,
+        like,
+      });
+      setPost({ ...post, likes: data.likes });
+    }
+  };
+
+  const addComment = async (e: any) => {
+    e.preventDefault();
+    if (userProfile && comment) {
+      setPostingComment(true);
+      const { data } = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+        userId: userProfile._id,
+        comment,
+      });
+      setPost({ ...post, comments: data.comments });
+      setComment("");
+      setPostingComment(false);
+    }
+  };
+
   return <>sss</>;
 };
 
