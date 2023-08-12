@@ -9,6 +9,7 @@ import axios from "axios";
 import { BASE_URL } from "@/utils";
 import { Video } from "@/types";
 import useAuthStore from "@/store";
+import LikeButton from "@/components/LikeButton";
 
 interface PostProps {
   postDetails: Video;
@@ -78,7 +79,95 @@ const VideoDetail = ({ postDetails }: PostProps) => {
       </div>
     );
 
-  return <>sss</>;
+  return (
+    <div className="flex w-full bg-white flex-wrap lg:flex-nowrap">
+      <div className="relative flex-2 w-full lg:w-9/12 flex justify-center items-center bg-blurred-img bg-no-repeat bg-cover bg-center">
+        <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50">
+          <p className="cursor-pointer" onClick={() => router.back()}>
+            <MdOutlineCancel className="text-white text-[35px]" />
+          </p>
+        </div>
+        <div className="relative bg-black">
+          <div className="h-[60vh] lg:h-[100vh]">
+            <video
+              ref={videoRef}
+              src={post.video.asset.url}
+              className="h-full cursor-pointer"
+              loop
+              onClick={onVideoClick}
+            ></video>
+          </div>
+          <div className="absolute top-[44%] left-[40%] cursor-pointer">
+            {!playing && (
+              <button onClick={onVideoClick}>
+                <BsFillPlayFill className="text-white text-6xl lg:text-8xl" />
+              </button>
+            )}
+          </div>
+        </div>
+        <div className="absolute bottom-5 lg:bottom-10 right-5 lg:right-10 cursor-pointer">
+          {videoMuted ? (
+            <button onClick={() => setVideoMuted(false)}>
+              <HiVolumeOff className="text-white text-2xl lg:text-4xl" />
+            </button>
+          ) : (
+            <button onClick={() => setVideoMuted(true)}>
+              <HiVolumeUp className="text-white text-2xl lg:text-4xl" />
+            </button>
+          )}
+        </div>
+      </div>
+      <div>
+        <div className="relative w-[100vw] lg:w-[700px]">
+          <div className="mt-10 lg:mt-20">
+            <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
+              <div className="ml-4 md:20 md:h-20 w-16 h-16">
+                <Link href="/">
+                  <img
+                    className="rounded-full"
+                    src={post.postedBy.image}
+                    alt={`${post.postedBy.userName} profile photo`}
+                  />
+                </Link>
+              </div>
+              <div>
+                <Link href="/">
+                  <div className="flex flex-col gap-1 mt-1">
+                    <p className="flex items-center gap-2  md:text-md font-bold text-primary ">
+                      {post.postedBy.userName}
+                      {/* <GoVerified className="text-blue-400 text-md" /> */}
+                    </p>
+                    <p className="capitalize font-medium text-sm text-gray-500  hidden md:block">
+                      {post.postedBy.userName}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            </div>
+            <p className="px-10 text-lg text-gray-600 font-medium">
+              {post.caption}
+            </p>
+            <div className="mt-10 px-10">
+              {userProfile && (
+                <LikeButton
+                  likes={post.likes}
+                  handleLike={() => handleLike(true)}
+                  handleDislike={() => handleLike(false)}
+                />
+              )}
+            </div>
+            {/* <Comments
+              comment={comment}
+              setComment={setComment}
+              addComment={addComment}
+              comments={post.comments}
+              postingComment={postingComment}
+            /> */}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export const getServerSideProps = async ({
