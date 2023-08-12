@@ -4,7 +4,6 @@ import useAuthStore from "@/store";
 import { IUser } from "@/types";
 import { NoResult } from ".";
 
-
 interface IProps {
   postingComment: boolean;
   comment: string;
@@ -13,7 +12,12 @@ interface IProps {
   comments: IComment[];
 }
 
-
+interface IComment {
+  comment: string;
+  length?: number;
+  _key: string;
+  postedBy: { _ref?: string; _id?: string };
+}
 
 const Comments = ({
   postingComment,
