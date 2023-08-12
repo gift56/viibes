@@ -137,8 +137,8 @@ const VideoDetail = ({ postDetails }: PostProps) => {
                       {post.postedBy.userName}
                       {/* <GoVerified className="text-blue-400 text-md" /> */}
                     </p>
-                    <p className="capitalize font-medium text-sm text-gray-500  hidden md:block">
-                      {post.postedBy.userName}
+                    <p className="font-medium text-sm text-gray-500 lowercase">
+                      @{post.postedBy.userName}
                     </p>
                   </div>
                 </Link>
