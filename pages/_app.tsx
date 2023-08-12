@@ -27,7 +27,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Viibes - </title>
+        <title>
+          Viibes - Expore the fun in video sharing and Have a happy life
+        </title>
         <meta
           name="description"
           content="Expore the fun in video sharing and Have a happy life"
