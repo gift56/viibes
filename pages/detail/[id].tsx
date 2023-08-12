@@ -81,7 +81,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
 
   return (
     <div className="flex w-full bg-white flex-wrap md:flex-nowrap md:h-screen md:overflow-hidden">
-      <div className="relative flex-2 w-full md:w-9/12 flex justify-center items-center bg-blurred-img bg-no-repeat bg-cover bg-center">
+      <div className="relative flex-2 w-full md:w-9/12 flex justify-center items-center bg-blurred-img bg-no-repeat bg-cover bg-center lg:flex-[2]">
         <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50">
           <p className="cursor-pointer" onClick={() => router.back()}>
             <MdOutlineCancel className="text-white text-[35px]" />
@@ -117,8 +117,8 @@ const VideoDetail = ({ postDetails }: PostProps) => {
           )}
         </div>
       </div>
-      <div className="lg:h-screen overflow-y-auto w-full">
-        <div className="relative md:w-[40%] w-full">
+      <div className="lg:h-screen overflow-y-auto w-full lg:flex-[1.2]">
+        <div className="relative  w-full">
           <div className="mt-10">
             <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
               <div className="ml-4 md:20 md:h-20 w-16 h-16">
