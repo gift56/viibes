@@ -14,7 +14,7 @@ interface PostProps {
 }
 
 const VideoDetail = ({ postDetails }: PostProps) => {
-  console.log(postDetails);
+  
   return <>sss</>;
 };
 
