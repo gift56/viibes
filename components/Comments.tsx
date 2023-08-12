@@ -29,7 +29,7 @@ const Comments = ({
   const { userProfile, allUsers } = useAuthStore();
 
   return (
-    <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#f8f8f8] dark:bg-[#1d2225] border-b-2 lg:pb-0 pb-[100px]">
+    <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#f8f8f8] border-b-2 lg:pb-0 pb-[100px]">
       <div className="overflow-scroll lg:h-[290px]">
         {comments?.length ? (
           comments.map((item, index) => (
@@ -48,11 +48,11 @@ const Comments = ({
                             />
                           </div>
                           <div className="hidden xl:block">
-                            <p className="flex gap-1 items-center text-md font-bold text-primary dark:text-gray-100 lowercase">
+                            <p className="flex gap-1 items-center text-md font-bold text-primary lowercase">
                               {user.userName.replace(" ", "")}
                               {/* <GoVerified className="text-blue-400" /> */}
                             </p>
-                            <p className="flex gap-1 items-center text-xs font-bold text-gray-400 dark:text-gray-300 capitalize">
+                            <p className="flex gap-1 items-center text-xs font-bold text-gray-400 capitalize">
                               {user.userName}
                             </p>
                           </div>
@@ -78,7 +78,7 @@ const Comments = ({
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="Add comment..."
-              className="bg-primary dark:bg-gray-800 dark:border-gray-800 px-6 py-4 text-md font-medium border-2 w-[100%] md:w-[500px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg"
+              className="bg-gray-200 px-6 py-4 text-md font-medium border-2 w-[100%] md:w-[500px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg"
             />
             <button
               className="text-md text-gray-100 bg-[#f51997] text-center rounded text-md font-medium  py-4 px-3 w-25 outline-none"
