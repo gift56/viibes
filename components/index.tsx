@@ -1,3 +1,4 @@
+import Comments from "./Comments";
 import ConnectAccount from "./ConnectAccount";
 import LeftSideBar from "./LeftSideBar";
 import NoResult from "./NoResult";
@@ -12,4 +13,5 @@ export {
   VideoCard,
   Upload,
   ConnectAccount,
+  Comments,
 };

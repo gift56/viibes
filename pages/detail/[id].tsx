@@ -10,6 +10,7 @@ import { BASE_URL } from "@/utils";
 import { Video } from "@/types";
 import useAuthStore from "@/store";
 import LikeButton from "@/components/LikeButton";
+import { Comments } from "@/components";
 
 interface PostProps {
   postDetails: Video;
@@ -147,7 +148,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
             <p className="px-10 text-lg text-gray-600 font-medium">
               {post.caption}
             </p>
-            <div className="mt-10 px-10">
+            <div className="mt-5 px-10">
               {userProfile && (
                 <LikeButton
                   likes={post.likes}
@@ -156,13 +157,13 @@ const VideoDetail = ({ postDetails }: PostProps) => {
                 />
               )}
             </div>
-            {/* <Comments
+            <Comments
               comment={comment}
               setComment={setComment}
               addComment={addComment}
               comments={post.comments}
               postingComment={postingComment}
-            /> */}
+            />
           </div>
         </div>
       </div>
