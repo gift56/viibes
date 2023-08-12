@@ -123,7 +123,7 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
             }`}
           >
             <Link
-              href={`/details/${post._id}`}
+              href={`/detail/${post._id}`}
               className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 border-b border-gray-400 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
             >
               <span>
