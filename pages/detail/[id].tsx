@@ -119,7 +119,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
       </div>
       <div>
         <div className="relative w-[100vw] lg:w-[700px]">
-          <div className="mt-10 lg:mt-20">
+          <div className="mt-10">
             <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
               <div className="ml-4 md:20 md:h-20 w-16 h-16">
                 <Link href="/">
