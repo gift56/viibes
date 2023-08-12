@@ -84,7 +84,7 @@ const Comments = ({
               className="bg-gray-200 px-6 py-4 text-md font-medium border-2 w-[100%] md:w-[500px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg"
             />
             <button
-              className="text-md text-gray-100 bg-[#f51997] text-center rounded text-md font-medium  py-4 px-3 w-25 outline-none"
+              className="text-md text-gray-100 bg-[#f51997] text-center rounded text-md font-medium py-3 px-3 w-25 outline-none"
               onClick={addComment}
             >
               {postingComment ? "Commenting..." : "Comment"}
