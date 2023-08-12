@@ -10,10 +10,7 @@ interface VideoProps {
 
 const Homepage = ({ videos }: VideoProps) => {
   return (
-    <MainLayout
-      pageTitle="Expore the fun in video sharing and Have a happy life"
-      showRight={true}
-    >
+    <MainLayout showRight={true}>
       <div className="w-full flex flex-col items-start gap-4 h-screen overflow-y-auto overflow-x-hidden scrollbar-hide">
         <h2 className="w-full text-xl font-bold sticky top-0 bg-white pt-6 px-4">
           Home

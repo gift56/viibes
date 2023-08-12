@@ -1,14 +1,12 @@
-import { LeftSideBar, RightSidebar } from "@/components";
-import Head from "next/head";
 import React, { ReactNode } from "react";
+import { LeftSideBar, RightSidebar } from "@/components";
 
 interface LayoutProps {
   children: ReactNode;
   showRight: boolean;
-  pageTitle: string;
 }
 
-const MainLayout = ({ children, pageTitle, showRight }: LayoutProps) => {
+const MainLayout = ({ children, showRight }: LayoutProps) => {
   return (
     <main className="xl:w-[1200px] m-auto overflow-hidden h-screen flex items-start justify-between flex-col lg:flex-row">
       <div className="lg:flex-[1] w-full border-b lg:border-none">

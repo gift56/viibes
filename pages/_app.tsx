@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import { useState, useEffect } from "react";
 import "@/styles/globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isSSR, setIsSSR] = useState(true);
@@ -25,6 +26,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <Head>
+        <title>Viibes - </title>
+        <meta
+          name="description"
+          content="Expore the fun in video sharing and Have a happy life"
+        />
+      </Head>
       <GoogleOAuthProvider
         clientId={`${process.env.NEXT_PUBLIC_GOGGLE_API_TOKEN}`}
       >
