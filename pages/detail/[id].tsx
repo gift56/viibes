@@ -65,6 +65,19 @@ const VideoDetail = ({ postDetails }: PostProps) => {
     }
   };
 
+  if (!post)
+    return (
+      <div className="w-full fixed bg-white z-40 flex h-screen items-center justify-center place-items-center">
+        <div className="w-40 h-40 animate-ping">
+          <img
+            className="rounded-full w-full h-full object-contain"
+            src="/vibeLogo.svg"
+            alt="logo photo"
+          />
+        </div>
+      </div>
+    );
+
   return <>sss</>;
 };
 
