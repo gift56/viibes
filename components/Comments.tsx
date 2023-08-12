@@ -29,49 +29,52 @@ const Comments = ({
   const { userProfile, allUsers } = useAuthStore();
 
   return (
-    <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#f8f8f8] border-b-2 lg:pb-0 pb-[100px]">
-      <div className="overflow-scroll lg:h-[290px]">
-        {comments?.length ? (
-          comments.map((item, index) => (
-            <>
-              {allUsers.map(
-                (user: IUser) =>
-                  user._id === (item.postedBy._id || item.postedBy._ref) && (
-                    <div className="p-2 items-center" key={index}>
-                      <Link href={`/profile/${user._id}`}>
-                        <div className="flex gap-3 items-start">
-                          <div className="w-8 h-8">
-                            <img
-                              src={user.image}
-                              className="rounded-full"
-                              alt="user profile"
-                            />
+    <>
+      <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#f8f8f8] border-b-2 lg:pb-0 pb-[100px]">
+        <div className="overflow-scroll lg:h-[290px]">
+          {comments?.length ? (
+            comments.map((item, index) => (
+              <>
+                {allUsers.map(
+                  (user: IUser) =>
+                    user._id === (item.postedBy._id || item.postedBy._ref) && (
+                      <div className="p-2 items-center" key={index}>
+                        <Link href={`/profile/${user._id}`}>
+                          <div className="flex gap-3 items-start">
+                            <div className="w-8 h-8">
+                              <img
+                                src={user.image}
+                                className="rounded-full"
+                                alt="user profile"
+                              />
+                            </div>
+                            <div className="hidden xl:block">
+                              <p className="flex gap-1 items-center text-md font-bold text-primary lowercase">
+                                {user.userName.replace(" ", "")}
+                                {/* <GoVerified className="text-blue-400" /> */}
+                              </p>
+                              <p className="flex gap-1 items-center text-xs font-bold text-gray-400 capitalize">
+                                {user.userName}
+                              </p>
+                            </div>
                           </div>
-                          <div className="hidden xl:block">
-                            <p className="flex gap-1 items-center text-md font-bold text-primary lowercase">
-                              {user.userName.replace(" ", "")}
-                              {/* <GoVerified className="text-blue-400" /> */}
-                            </p>
-                            <p className="flex gap-1 items-center text-xs font-bold text-gray-400 capitalize">
-                              {user.userName}
-                            </p>
-                          </div>
+                        </Link>
+                        <div className="mt-3">
+                          <p>{item.comment}</p>
                         </div>
-                      </Link>
-                      <div className="mt-3">
-                        <p>{item.comment}</p>
                       </div>
-                    </div>
-                  )
-              )}
-            </>
-          ))
-        ) : (
-          <NoResult text="No Comments yet!" />
-        )}
+                    )
+                )}
+              </>
+            ))
+          ) : (
+            <NoResult text="No Comments yet!" />
+          )}
+        </div>
       </div>
+
       {userProfile && (
-        <div className="absolute bottom-[-97px] left-0 pb-6 px-2 md:px-10">
+        <div className="pb-6 px-2 md:px-10 w-full mt-3">
           <form onSubmit={addComment} className="flex gap-4">
             <input
               type="text"
@@ -89,7 +92,7 @@ const Comments = ({
           </form>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
