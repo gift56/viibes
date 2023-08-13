@@ -27,6 +27,8 @@ const VideoDetail = ({ postDetails }: PostProps) => {
   const [playing, setPlaying] = useState(false);
   const [dropDown, setDropDown] = useState<any>(null);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [dots, setDots] = useState(".");
+  const [isDeleting, setIsDeleting] = useState(false);
   const [succefullyDeleted, setSuccefullyDeleted] = useState(false);
 
   const [videoMuted, setVideoMuted] = useState(false);
@@ -51,6 +53,20 @@ const VideoDetail = ({ postDetails }: PostProps) => {
       videoRef.current.muted = videoMuted;
     }
   }, [post, videoMuted]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDots((prevDots) => {
+        if (prevDots === "...") {
+          return ".";
+        } else {
+          return prevDots + ".";
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isDeleting]);
 
   const handleLike = async (like: boolean) => {
     if (userProfile) {
@@ -78,13 +94,15 @@ const VideoDetail = ({ postDetails }: PostProps) => {
   };
 
   const deleteVideo = async () => {
+    setIsDeleting(true);
     try {
       const res = await axios.delete(`${BASE_URL}/api/post/${post._id}`);
-
       setSuccefullyDeleted(true);
+      setIsDeleting(false);
       return res.data;
     } catch (error) {
       console.log(error);
+      setIsDeleting(false);
     }
   };
 
@@ -310,7 +328,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
                   />
                   <Button
                     onClick={deleteVideo}
-                    text="Proceed"
+                    text={isDeleting ? `Proceeding ${dots}` : "Proceed"}
                     className="bg-[#D92D20] shadow-inputShad text-sm px-4 h-10 text-white border-[#D92D20]"
                   />
                 </div>
