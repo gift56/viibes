@@ -28,6 +28,9 @@ const Comments = ({
 }: IProps) => {
   const { userProfile, allUsers } = useAuthStore();
 
+  console.log(comments);
+  console.log(allUsers);
+
   return (
     <>
       <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#f8f8f8] border-b-2 lg:pb-0 pb-[100px]">
@@ -49,7 +52,7 @@ const Comments = ({
                               />
                             </div>
                             <div className="hidden xl:block">
-                              <p className="flex gap-1 items-center text-md font-bold text-primary lowercase">
+                              <p className="flex gap-1 items-center text-base font-bold text-primary lowercase">
                                 {user.userName.replace(" ", "")}
                                 {/* <GoVerified className="text-blue-400" /> */}
                               </p>

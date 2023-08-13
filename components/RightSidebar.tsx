@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "./Footer";
 import Link from "next/link";
 import { BiSearch } from "react-icons/bi";
 import { useRouter } from "next/router";
+import useAuthStore from "@/store";
 
 const RightSidebar = () => {
   const [searchValue, setSearchValue] = useState("");
+  const { fetchAllUsers, allUsers } = useAuthStore();
+
+  useEffect(() => {
+    fetchAllUsers();
+  }, [fetchAllUsers]);
   const router = useRouter();
 
   const handleSearch = (e: { preventDefault: () => void }) => {
