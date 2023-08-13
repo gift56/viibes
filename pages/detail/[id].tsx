@@ -169,33 +169,35 @@ const VideoDetail = ({ postDetails }: PostProps) => {
                 </div>
               </div>
 
-              <div className="relative">
-                <span
-                  onClick={() =>
-                    setDropDown(dropDown !== post._id ? post._id : null)
-                  }
-                  className="cursor-pointer"
-                >
-                  <BsThreeDots size={25} />
-                </span>
-                <motion.div
-                  animate={dropDown === post._id ? "open" : "closed"}
-                  variants={variants}
-                  className={`w-[200px] bg-white border border-gray-400 flex-col items-start rounded-xl overflow-hidden absolute right-0 z-10 ${
-                    dropDown === post._id ? "flex" : "hidden"
-                  }`}
-                >
-                  <div
-                    onClick={deleteVideo}
-                    className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300"
+              {userProfile && (
+                <div className="relative">
+                  <span
+                    onClick={() =>
+                      setDropDown(dropDown !== post._id ? post._id : null)
+                    }
+                    className="cursor-pointer"
                   >
-                    <span>
-                      <BsFillTrash3Fill size={20} />
-                    </span>
-                    <span>Delete Video</span>
-                  </div>
-                </motion.div>
-              </div>
+                    <BsThreeDots size={25} />
+                  </span>
+                  <motion.div
+                    animate={dropDown === post._id ? "open" : "closed"}
+                    variants={variants}
+                    className={`w-[200px] bg-white border border-gray-400 flex-col items-start rounded-xl overflow-hidden absolute right-0 z-10 ${
+                      dropDown === post._id ? "flex" : "hidden"
+                    }`}
+                  >
+                    <div
+                      onClick={deleteVideo}
+                      className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300"
+                    >
+                      <span>
+                        <BsFillTrash3Fill size={20} />
+                      </span>
+                      <span>Delete Video</span>
+                    </div>
+                  </motion.div>
+                </div>
+              )}
             </div>
 
             <p className="px-10 text-lg text-gray-600 font-medium">
