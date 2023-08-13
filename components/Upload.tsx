@@ -18,7 +18,7 @@ const Upload = () => {
               alt="avatar"
               className="w-10 h-10 object-contain rounded-full"
             />
-            <div className="w-full cursor-pointer items-center justify-start gap-2 select-none text-gray-600 hidden md:flex">
+            <div className="w-full cursor-pointer items-center justify-start gap-2 select-none text-gray-600 hidden sm:flex">
               <span className="text-base font-normal">Upload a video</span>
               <span>
                 <HiOutlinePencilSquare />
