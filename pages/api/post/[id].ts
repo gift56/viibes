@@ -35,7 +35,7 @@ export default async function handler(
   } else if (req.method === "DELETE") {
     const { id }: any = req.query;
 
-    const data = await client.delete(postDetailQuery(id));
+    const data = await client.delete(id);
 
     res.status(200).json(data);
   }
