@@ -36,7 +36,7 @@ const Comments = ({
             comments.map((item, index) => (
               <>
                 {allUsers.map(
-                  (user: IUser) =>
+                  (user: IUser, index: number) =>
                     user._id === (item.postedBy._id || item.postedBy._ref) && (
                       <div className="p-2 items-center" key={index}>
                         <Link href={`/profile/${user._id}`}>

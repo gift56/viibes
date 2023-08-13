@@ -75,9 +75,13 @@ const VideoDetail = ({ postDetails }: PostProps) => {
   };
 
   const deleteVideo = async () => {
-    const res = await axios.delete(`${BASE_URL}/api/post/${post._id}`);
-    console.log(res.data);
-    router.push("/");
+    try {
+      const res = await axios.delete(`${BASE_URL}/api/post/${post._id}`);
+      console.log(res.data);
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const variants = {
