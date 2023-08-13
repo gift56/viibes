@@ -67,11 +67,11 @@ const VideoDetail = ({ postDetails }: PostProps) => {
     }
   };
 
-  const deleteVideo = async () => {
-    const res = await axios.delete(`${BASE_URL}/api/post/${post._id}`);
-    console.log(res.data);
-    router.push("/");
-  };
+  // const deleteVideo = async () => {
+  //   const res = await axios.delete(`${BASE_URL}/api/post/${post._id}`);
+  //   console.log(res.data);
+  //   router.push("/");
+  // };
 
   if (!post)
     return (
