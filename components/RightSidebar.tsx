@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BiSearch } from "react-icons/bi";
 import { useRouter } from "next/router";
 import useAuthStore from "@/store";
+import { IUser } from "@/types";
 
 const RightSidebar = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -53,7 +54,7 @@ const RightSidebar = () => {
         <div>
           {allUsers.slice(0, 6).map((user: IUser) => (
             <Link href={`/profile/${user._id}`} key={user._id}>
-              <div className="flex items-center gap-3 cursor-pointer hover:bg-primary dark:hover:bg-gray-700 p-2 font-semibold rounded transition-all">
+              <div className="flex items-center gap-3 cursor-pointer hover:bg-gray-200 p-2 font-semibold rounded transition-all">
                 <div className="w-8 h-8">
                   <img
                     src={user.image}
@@ -62,11 +63,11 @@ const RightSidebar = () => {
                   />
                 </div>
                 <div className="hidden xl:block">
-                  <p className="flex gap-1 items-center text-md font-bold text-primary dark:text-gray-100 lowercase">
+                  <p className="flex gap-1 items-center text-md font-bold text-gray-200 lowercase">
                     {user.userName.replace(" ", "")}{" "}
                     {/* <GoVerified className="text-blue-400" /> */}
                   </p>
-                  <p className="flex gap-1 items-center text-xs font-bold text-gray-400 dark:text-gray-300 capitalize">
+                  <p className="flex gap-1 items-center text-xs font-bold text-gray-400 capitalize">
                     {user.userName}
                   </p>
                 </div>
