@@ -77,6 +77,8 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
     closed: { opacity: 0, scale: 0, transition: { duration: 0.2 } },
   };
 
+  console.log(post)
+
   return (
     <div className="flex flex-col pb-6 border-b-2 border-gray-200">
       <div className="flex items-center justify-between w-full px-3 lg:px-0">
