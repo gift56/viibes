@@ -8,7 +8,7 @@ interface LayoutProps {
 
 const MainLayout = ({ children, showRight }: LayoutProps) => {
   return (
-    <main className="xl:w-[1200px] m-auto overflow-hidden h-screen flex items-start justify-between flex-col lg:flex-row">
+    <main className="lg:w-[1200px] m-auto overflow-hidden h-screen flex items-start justify-between flex-col lg:flex-row">
       <div className="lg:flex-[1] w-full border-b lg:border-none">
         <LeftSideBar />
       </div>
