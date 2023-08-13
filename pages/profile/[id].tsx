@@ -12,7 +12,7 @@ interface UserProps {
 }
 
 const Profilepage = ({ data }: UserProps) => {
-  console.log(data);
+  
   return <div>Profilepage</div>;
 };
 
