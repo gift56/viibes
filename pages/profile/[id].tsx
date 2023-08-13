@@ -29,7 +29,32 @@ const Profilepage = ({ data }: UserProps) => {
     }
   }, [showUserVideos, userLikedVideos, userVideos]);
 
-  return <MainLayout showRight={false}>hello</MainLayout>;
+  return (
+    <MainLayout showRight={false}>
+      <div>
+        <div className="w-full">
+          <div className="flex gap-6 md:gap-10 mb-4 bg-white w-full items-center">
+            <div className="w-16 h-16 md:w-32 md:h-32">
+              <img
+                src={user?.image}
+                className="rounded-full"
+                alt="user profile"
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <p className="flex gap-1 items-center text-base font-bold text-gray-600 capitalize  md:text-2xl tracking-wider justify-center">
+                {user?.userName}
+                {/* <GoVerified className="text-blue-400" /> */}
+              </p>
+              <p className="flex gap-1 items-center text-xs font-bold text-gray-400  lowercase md:text-xl">
+                {user?.userName.replace(" ", "")}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </MainLayout>
+  );
 };
 
 export const getServerSideProps = async ({
