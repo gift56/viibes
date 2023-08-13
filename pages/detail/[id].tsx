@@ -19,6 +19,7 @@ interface PostProps {
 const VideoDetail = ({ postDetails }: PostProps) => {
   const [post, setPost] = useState(postDetails);
   const [playing, setPlaying] = useState(false);
+  const [dropDown, setDropDown] = useState<any>(null);
   const [videoMuted, setVideoMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
@@ -127,29 +128,32 @@ const VideoDetail = ({ postDetails }: PostProps) => {
       <div className="lg:h-screen overflow-y-auto w-full lg:flex-[1.2]">
         <div className="relative w-full">
           <div className="mt-10">
-            <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
-              <div className="ml-4 md:20 md:h-20 w-16 h-16">
-                <Link href="/">
-                  <img
-                    className="rounded-full"
-                    src={post.postedBy.image}
-                    alt={`${post.postedBy.userName} profile photo`}
-                  />
-                </Link>
+            <div className="w-full flex items-center justify-between">
+              <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
+                <div className="ml-4 md:20 md:h-20 w-16 h-16">
+                  <Link href="/">
+                    <img
+                      className="rounded-full"
+                      src={post.postedBy.image}
+                      alt={`${post.postedBy.userName} profile photo`}
+                    />
+                  </Link>
+                </div>
+                <div>
+                  <Link href="/">
+                    <div className="flex flex-col gap-1 mt-1">
+                      <p className="flex items-center gap-2  md:text-md font-bold text-primary ">
+                        {post.postedBy.userName}
+                        {/* <GoVerified className="text-blue-400 text-md" /> */}
+                      </p>
+                      <p className="font-medium text-sm text-gray-500 lowercase">
+                        @{post.postedBy.userName.replace(" ", "")}
+                      </p>
+                    </div>
+                  </Link>
+                </div>
               </div>
-              <div>
-                <Link href="/">
-                  <div className="flex flex-col gap-1 mt-1">
-                    <p className="flex items-center gap-2  md:text-md font-bold text-primary ">
-                      {post.postedBy.userName}
-                      {/* <GoVerified className="text-blue-400 text-md" /> */}
-                    </p>
-                    <p className="font-medium text-sm text-gray-500 lowercase">
-                      @{post.postedBy.userName.replace(" ", "")}
-                    </p>
-                  </div>
-                </Link>
-              </div>
+              
             </div>
             <p className="px-10 text-lg text-gray-600 font-medium">
               {post.caption}
