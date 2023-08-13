@@ -67,6 +67,12 @@ const VideoDetail = ({ postDetails }: PostProps) => {
     }
   };
 
+  const deleteVideo = async () => {
+    const res = await axios.delete(`${BASE_URL}/api/post/${post._id}`);
+    console.log(res.data);
+    router.push("/");
+  };
+
   if (!post)
     return (
       <div className="w-full fixed bg-white z-40 flex h-screen items-center justify-center place-items-center">
