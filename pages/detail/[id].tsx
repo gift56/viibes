@@ -288,7 +288,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
 
             <div className="w-full flex items-center justify-center flex-col gap-4">
               <div className="w-[50px] h-[50px] rounded-full bg-[#FEF3F2] flex items-center justify-center">
-                <span className="w-6 h-6 flex items-center justify-center rounded-full text-red-300">
+                <span className="w-6 h-6 flex items-center justify-center rounded-full text-[#D92D20]">
                   <BsFillTrash3Fill size={20} />
                 </span>
               </div>
