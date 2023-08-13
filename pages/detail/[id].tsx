@@ -2,8 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 // import { GoVerified } from "react-icons/go";
-import { MdOutlineCancel } from "react-icons/md";
-import { BsFillPlayFill } from "react-icons/bs";
+import { MdOutlineCancel, MdOutlineVideoLibrary } from "react-icons/md";
+import {
+  BsDownload,
+  BsFillPlayFill,
+  BsFillTrash3Fill,
+  BsThreeDots,
+} from "react-icons/bs";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import axios from "axios";
 import { BASE_URL } from "@/utils";
@@ -11,6 +16,7 @@ import { Video } from "@/types";
 import useAuthStore from "@/store";
 import LikeButton from "@/components/LikeButton";
 import { Comments } from "@/components";
+import { motion } from "framer-motion";
 
 interface PostProps {
   postDetails: Video;
@@ -74,6 +80,11 @@ const VideoDetail = ({ postDetails }: PostProps) => {
     router.push("/");
   };
 
+  const variants = {
+    open: { opacity: 1, scale: 1, transition: { duration: 0.2 } },
+    closed: { opacity: 0, scale: 0, transition: { duration: 0.2 } },
+  };
+
   if (!post)
     return (
       <div className="w-full fixed bg-white z-40 flex h-screen items-center justify-center place-items-center">
@@ -128,9 +139,9 @@ const VideoDetail = ({ postDetails }: PostProps) => {
       <div className="lg:h-screen overflow-y-auto w-full lg:flex-[1.2]">
         <div className="relative w-full">
           <div className="mt-10">
-            <div className="w-full flex items-center justify-between">
-              <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
-                <div className="ml-4 md:20 md:h-20 w-16 h-16">
+            <div className="w-full flex items-start justify-between px-5">
+              <div className="flex gap-3 cursor-pointer font-semibold rounded">
+                <div className="md:h-20 w-16 h-16">
                   <Link href="/">
                     <img
                       className="rounded-full"
@@ -153,8 +164,33 @@ const VideoDetail = ({ postDetails }: PostProps) => {
                   </Link>
                 </div>
               </div>
-              
+
+              <div className="relative">
+                <span
+                  onClick={() =>
+                    setDropDown(dropDown !== post._id ? post._id : null)
+                  }
+                  className="cursor-pointer"
+                >
+                  <BsThreeDots size={25} />
+                </span>
+                <motion.div
+                  animate={dropDown === post._id ? "open" : "closed"}
+                  variants={variants}
+                  className={`w-[200px] bg-white border border-gray-400 flex-col items-start rounded-xl overflow-hidden absolute right-0 z-10 ${
+                    dropDown === post._id ? "flex" : "hidden"
+                  }`}
+                >
+                  <div className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300">
+                    <span>
+                      <BsFillTrash3Fill size={20} />
+                    </span>
+                    <span>Delete Video</span>
+                  </div>
+                </motion.div>
+              </div>
             </div>
+
             <p className="px-10 text-lg text-gray-600 font-medium">
               {post.caption}
             </p>
