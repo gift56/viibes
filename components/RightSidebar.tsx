@@ -17,8 +17,8 @@ const RightSidebar = () => {
   };
 
   return (
-    <div className="flex flex-col items-start justify-start gap-4 h-screen py-5 w-full overflow-y-auto scrollbar-hide">
-      <div className="relative hidden lg:block">
+    <div className="flex flex-col items-start justify-start gap-4 h-screen p-5 w-full overflow-y-auto scrollbar-hide">
+      <div className="relative hidden lg:block w-full">
         <form
           onSubmit={handleSearch}
           className="bg-gray-200 w-full flex items-center border-2 border-gray-200 rounded-full p-3 gap-3"
