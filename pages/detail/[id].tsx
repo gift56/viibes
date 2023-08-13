@@ -26,6 +26,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
   const [post, setPost] = useState(postDetails);
   const [playing, setPlaying] = useState(false);
   const [dropDown, setDropDown] = useState<any>(null);
+  const [deleteModal, setDeleteModal] = useState(false);
   const [videoMuted, setVideoMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
@@ -103,126 +104,129 @@ const VideoDetail = ({ postDetails }: PostProps) => {
     );
 
   return (
-    <div className="flex w-full bg-white flex-wrap md:flex-nowrap md:h-screen md:overflow-hidden">
-      <div className="relative flex-2 w-full md:w-9/12 flex justify-center items-center bg-blurred-img bg-no-repeat bg-cover bg-center lg:flex-[2]">
-        <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50">
-          <p className="cursor-pointer" onClick={() => router.back()}>
-            <MdOutlineCancel className="text-white text-[35px]" />
-          </p>
-        </div>
-        <div className="relative bg-black">
-          <div className="h-[60vh] lg:h-[100vh]">
-            <video
-              ref={videoRef}
-              src={post.video.asset.url}
-              className="h-full cursor-pointer"
-              loop
-              onClick={onVideoClick}
-            ></video>
+    <>
+      <div className="flex w-full bg-white flex-wrap md:flex-nowrap md:h-screen md:overflow-hidden">
+        <div className="relative flex-2 w-full md:w-9/12 flex justify-center items-center bg-blurred-img bg-no-repeat bg-cover bg-center lg:flex-[2]">
+          <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50">
+            <p className="cursor-pointer" onClick={() => router.back()}>
+              <MdOutlineCancel className="text-white text-[35px]" />
+            </p>
           </div>
-          <div className="absolute top-[44%] left-[40%] cursor-pointer">
-            {!playing && (
-              <button onClick={onVideoClick}>
-                <BsFillPlayFill className="text-white text-6xl lg:text-8xl" />
+          <div className="relative bg-black">
+            <div className="h-[60vh] lg:h-[100vh]">
+              <video
+                ref={videoRef}
+                src={post.video.asset.url}
+                className="h-full cursor-pointer"
+                loop
+                onClick={onVideoClick}
+              ></video>
+            </div>
+            <div className="absolute top-[44%] left-[40%] cursor-pointer">
+              {!playing && (
+                <button onClick={onVideoClick}>
+                  <BsFillPlayFill className="text-white text-6xl lg:text-8xl" />
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="absolute bottom-5 lg:bottom-10 right-5 lg:right-10 cursor-pointer">
+            {videoMuted ? (
+              <button onClick={() => setVideoMuted(false)}>
+                <HiVolumeOff className="text-white text-2xl lg:text-4xl" />
+              </button>
+            ) : (
+              <button onClick={() => setVideoMuted(true)}>
+                <HiVolumeUp className="text-white text-2xl lg:text-4xl" />
               </button>
             )}
           </div>
         </div>
-        <div className="absolute bottom-5 lg:bottom-10 right-5 lg:right-10 cursor-pointer">
-          {videoMuted ? (
-            <button onClick={() => setVideoMuted(false)}>
-              <HiVolumeOff className="text-white text-2xl lg:text-4xl" />
-            </button>
-          ) : (
-            <button onClick={() => setVideoMuted(true)}>
-              <HiVolumeUp className="text-white text-2xl lg:text-4xl" />
-            </button>
-          )}
-        </div>
-      </div>
-      <div className="lg:h-screen overflow-y-auto w-full lg:flex-[1.2]">
-        <div className="relative w-full">
-          <div className="mt-10">
-            <div className="w-full flex items-start justify-between px-5">
-              <div className="flex gap-3 cursor-pointer font-semibold rounded">
-                <div className="md:h-20 w-16 h-16">
-                  <Link href={`/profile/${post.postedBy._id}`}>
-                    <img
-                      className="rounded-full"
-                      src={post.postedBy.image}
-                      alt={`${post.postedBy.userName} profile photo`}
-                    />
-                  </Link>
+
+        <div className="lg:h-screen overflow-y-auto w-full lg:flex-[1.2]">
+          <div className="relative w-full">
+            <div className="mt-10">
+              <div className="w-full flex items-start justify-between px-5">
+                <div className="flex gap-3 cursor-pointer font-semibold rounded">
+                  <div className="md:h-20 w-16 h-16">
+                    <Link href={`/profile/${post.postedBy._id}`}>
+                      <img
+                        className="rounded-full"
+                        src={post.postedBy.image}
+                        alt={`${post.postedBy.userName} profile photo`}
+                      />
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href={`/profile/${post.postedBy._id}`}>
+                      <div className="flex flex-col gap-1 mt-1">
+                        <p className="flex items-center gap-2  md:text-md font-bold text-primary ">
+                          {post.postedBy.userName}
+                          {/* <GoVerified className="text-blue-400 text-md" /> */}
+                        </p>
+                        <p className="font-medium text-sm text-gray-500 lowercase">
+                          @{post.postedBy.userName.replace(" ", "")}
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
-                <div>
-                  <Link href={`/profile/${post.postedBy._id}`}>
-                    <div className="flex flex-col gap-1 mt-1">
-                      <p className="flex items-center gap-2  md:text-md font-bold text-primary ">
-                        {post.postedBy.userName}
-                        {/* <GoVerified className="text-blue-400 text-md" /> */}
-                      </p>
-                      <p className="font-medium text-sm text-gray-500 lowercase">
-                        @{post.postedBy.userName.replace(" ", "")}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
+
+                {userProfile && (
+                  <div className="relative">
+                    <span
+                      onClick={() =>
+                        setDropDown(dropDown !== post._id ? post._id : null)
+                      }
+                      className="cursor-pointer"
+                    >
+                      <BsThreeDots size={25} />
+                    </span>
+                    <motion.div
+                      animate={dropDown === post._id ? "open" : "closed"}
+                      variants={variants}
+                      className={`w-[200px] bg-white border border-gray-400 flex-col items-start rounded-xl overflow-hidden absolute right-0 z-10 ${
+                        dropDown === post._id ? "flex" : "hidden"
+                      }`}
+                    >
+                      <div
+                        onClick={() => setDeleteModal(true)}
+                        className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300"
+                      >
+                        <span>
+                          <BsFillTrash3Fill size={20} />
+                        </span>
+                        <span>Delete Video</span>
+                      </div>
+                    </motion.div>
+                  </div>
+                )}
               </div>
 
-              {userProfile && (
-                <div className="relative">
-                  <span
-                    onClick={() =>
-                      setDropDown(dropDown !== post._id ? post._id : null)
-                    }
-                    className="cursor-pointer"
-                  >
-                    <BsThreeDots size={25} />
-                  </span>
-                  <motion.div
-                    animate={dropDown === post._id ? "open" : "closed"}
-                    variants={variants}
-                    className={`w-[200px] bg-white border border-gray-400 flex-col items-start rounded-xl overflow-hidden absolute right-0 z-10 ${
-                      dropDown === post._id ? "flex" : "hidden"
-                    }`}
-                  >
-                    <div
-                      onClick={deleteVideo}
-                      className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300"
-                    >
-                      <span>
-                        <BsFillTrash3Fill size={20} />
-                      </span>
-                      <span>Delete Video</span>
-                    </div>
-                  </motion.div>
-                </div>
-              )}
+              <p className="px-10 text-lg text-gray-600 font-medium">
+                {post.caption}
+              </p>
+              <div className="mt-5 px-10">
+                {userProfile && (
+                  <LikeButton
+                    likes={post.likes}
+                    handleLike={() => handleLike(true)}
+                    handleDislike={() => handleLike(false)}
+                  />
+                )}
+              </div>
+              <Comments
+                comment={comment}
+                setComment={setComment}
+                addComment={addComment}
+                comments={post.comments}
+                postingComment={postingComment}
+              />
             </div>
-
-            <p className="px-10 text-lg text-gray-600 font-medium">
-              {post.caption}
-            </p>
-            <div className="mt-5 px-10">
-              {userProfile && (
-                <LikeButton
-                  likes={post.likes}
-                  handleLike={() => handleLike(true)}
-                  handleDislike={() => handleLike(false)}
-                />
-              )}
-            </div>
-            <Comments
-              comment={comment}
-              setComment={setComment}
-              addComment={addComment}
-              comments={post.comments}
-              postingComment={postingComment}
-            />
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
