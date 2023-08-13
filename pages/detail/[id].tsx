@@ -146,7 +146,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
             <div className="w-full flex items-start justify-between px-5">
               <div className="flex gap-3 cursor-pointer font-semibold rounded">
                 <div className="md:h-20 w-16 h-16">
-                  <Link href="/">
+                  <Link href={`/profile/${post.postedBy._id}`}>
                     <img
                       className="rounded-full"
                       src={post.postedBy.image}
@@ -155,7 +155,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
                   </Link>
                 </div>
                 <div>
-                  <Link href="/">
+                  <Link href={`/profile/${post.postedBy._id}`}>
                     <div className="flex flex-col gap-1 mt-1">
                       <p className="flex items-center gap-2  md:text-md font-bold text-primary ">
                         {post.postedBy.userName}
