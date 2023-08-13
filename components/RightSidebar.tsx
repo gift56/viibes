@@ -51,21 +51,23 @@ const RightSidebar = () => {
           Suggested Accounts
         </p>
         <div>
-          {[0, 1, 2, 3, 4].slice(0, 6).map((user: any) => (
-            <Link href={`/profile/${user?._id}`} key={user?._id}>
-              <div className="flex items-center gap-3 cursor-pointer hover:bg-gray-200 p-2 font-semibold rounded transition-all">
-                {/* dark:hover:bg-gray-700 */}
+          {allUsers.slice(0, 6).map((user: IUser) => (
+            <Link href={`/profile/${user._id}`} key={user._id}>
+              <div className="flex items-center gap-3 cursor-pointer hover:bg-primary dark:hover:bg-gray-700 p-2 font-semibold rounded transition-all">
                 <div className="w-8 h-8">
-                  <img src="" alt="" />
+                  <img
+                    src={user.image}
+                    className="rounded-full"
+                    alt={`${user.userName} profile`}
+                  />
                 </div>
-                <div className="hidden lg:block">
-                  {/* <p className="flex gap-1 items-center text-md font-bold text-primary dark:text-gray-100 lowercase">
+                <div className="hidden xl:block">
+                  <p className="flex gap-1 items-center text-md font-bold text-primary dark:text-gray-100 lowercase">
                     {user.userName.replace(" ", "")}{" "}
-                    <GoVerified className="text-blue-400" />
-                  </p> */}
-                  <p className="flex gap-1 items-center text-xs font-bold text-gray-400 capitalize">
-                    {/* dark:text-gray-300 */}
-                    User
+                    {/* <GoVerified className="text-blue-400" /> */}
+                  </p>
+                  <p className="flex gap-1 items-center text-xs font-bold text-gray-400 dark:text-gray-300 capitalize">
+                    {user.userName}
                   </p>
                 </div>
               </div>
