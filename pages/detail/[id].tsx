@@ -2,21 +2,21 @@ import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 // import { GoVerified } from "react-icons/go";
-import { MdOutlineCancel, MdOutlineVideoLibrary } from "react-icons/md";
 import {
-  BsDownload,
-  BsFillPlayFill,
-  BsFillTrash3Fill,
-  BsThreeDots,
-} from "react-icons/bs";
+  MdClose,
+  MdOutlineCancel,
+  MdOutlineVideoLibrary,
+} from "react-icons/md";
+import { BsFillPlayFill, BsFillTrash3Fill, BsThreeDots } from "react-icons/bs";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import axios from "axios";
 import { BASE_URL } from "@/utils";
 import { Video } from "@/types";
 import useAuthStore from "@/store";
 import LikeButton from "@/components/LikeButton";
-import { Comments } from "@/components";
+import { Button, Comments } from "@/components";
 import { motion } from "framer-motion";
+import { FiCheck } from "react-icons/fi";
 
 interface PostProps {
   postDetails: Video;
@@ -27,6 +27,8 @@ const VideoDetail = ({ postDetails }: PostProps) => {
   const [playing, setPlaying] = useState(false);
   const [dropDown, setDropDown] = useState<any>(null);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [succefullyDeleted, setSuccefullyDeleted] = useState(false);
+
   const [videoMuted, setVideoMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
@@ -78,8 +80,9 @@ const VideoDetail = ({ postDetails }: PostProps) => {
   const deleteVideo = async () => {
     try {
       const res = await axios.delete(`${BASE_URL}/api/post/${post._id}`);
-      console.log(res.data);
-      router.push("/");
+
+      setSuccefullyDeleted(true);
+      return res.data;
     } catch (error) {
       console.log(error);
     }
@@ -225,6 +228,96 @@ const VideoDetail = ({ postDetails }: PostProps) => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div
+        className={`fixed top-0 right-0 w-full h-full bg-[#00000085] z-40 place-items-center flex justify-center transition-all duration-500 overflow-auto ${
+          deleteModal ? "flex" : "hidden"
+        }`}
+      >
+        {succefullyDeleted ? (
+          <motion.div
+            animate={succefullyDeleted ? "open" : "closed"}
+            variants={variants}
+            className="lg:w-[600px] w-[90%] p-4 pt-8 pb-0 bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 relative border-t-[4px] border-success"
+          >
+            <span
+              onClick={() => setDeleteModal(false)}
+              className="w-12 h-12 bg-white flex items-center justify-center rounded-lg text-danger cursor-pointer absolute right-10 top-6"
+            >
+              <MdClose size={18} />
+            </span>
+            <div className="w-full flex items-center justify-center flex-col gap-4">
+              <div className="w-[50px] h-[50px] rounded-full bg-[#ECFDF3] flex items-center justify-center">
+                <span className="w-6 h-6 flex items-center justify-center rounded-full text-[#027A48]">
+                  <FiCheck size={20} />
+                </span>
+              </div>
+              <h3 className="text-dark text-xl font-medium lg:max-w-[400px] text-center">
+                Congratulations, the video has been successfully deleted!
+              </h3>
+              <p className="text-gray1 text-center text-sm font-normal flex flex-col items-center justify-center pb-4">
+                The video has been successfully deleted.
+              </p>
+              <div className="w-full flex items-center justify-end gap-2 bg-gray3 p-4">
+                <div className="flex items-center justify-end gap-3">
+                  <Button
+                    onClick={() => {
+                      setDeleteModal(false);
+                      router.push("/");
+                    }}
+                    text="Back to Homepage"
+                    className="text-sm px-4 h-10  text-dark2 bg-white"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            animate={deleteModal ? "open" : "closed"}
+            variants={variants}
+            className="lg:w-[600px] w-[90%] pt-8 pb-0 bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 relative border-t-[4px] border-[#F97066] overflow-hidden"
+          >
+            <span
+              onClick={() => setDeleteModal(false)}
+              className="w-12 h-12 bg-white flex items-center justify-center rounded-lg text-danger cursor-pointer absolute right-10 top-6"
+            >
+              <MdClose size={18} />
+            </span>
+
+            <div className="w-full flex items-center justify-center flex-col gap-4">
+              <div className="w-[50px] h-[50px] rounded-full bg-[#FEF3F2] flex items-center justify-center">
+                <span className="w-6 h-6 flex items-center justify-center rounded-full text-red-300">
+                  <BsFillTrash3Fill size={20} />
+                </span>
+              </div>
+              <h3 className="text-dark text-xl font-medium lg:max-w-[400px] text-center">
+                Delete {post.caption} Video?
+              </h3>
+              <p className="text-gray1 text-center text-sm font-normal flex flex-col items-center justify-center pb-4">
+                Are you sure you want to delete this video? The video will no
+                longer be available.
+              </p>
+              <div className="w-full flex items-center justify-end gap-2 p-4">
+                <div className="flex items-center justify-end gap-3">
+                  <Button
+                    onClick={() => {
+                      setDeleteModal(false);
+                    }}
+                    text="Cancel"
+                    className="bg-white shadow-inputShad text-sm px-4 h-10"
+                  />
+                  <Button
+                    onClick={deleteVideo}
+                    text="Proceed"
+                    className="bg-[#D92D20] shadow-inputShad text-sm px-4 h-10 text-white border-[#D92D20]"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
       </div>
     </>
   );

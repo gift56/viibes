@@ -1,3 +1,4 @@
+import Button from "./Button";
 import Comments from "./Comments";
 import ConnectAccount from "./ConnectAccount";
 import LeftSideBar from "./LeftSideBar";
@@ -14,4 +15,5 @@ export {
   Upload,
   ConnectAccount,
   Comments,
+  Button,
 };
