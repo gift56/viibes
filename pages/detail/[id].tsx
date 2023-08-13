@@ -181,7 +181,10 @@ const VideoDetail = ({ postDetails }: PostProps) => {
                     dropDown === post._id ? "flex" : "hidden"
                   }`}
                 >
-                  <div className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300">
+                  <div
+                    onClick={deleteVideo}
+                    className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300"
+                  >
                     <span>
                       <BsFillTrash3Fill size={20} />
                     </span>
