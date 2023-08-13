@@ -63,12 +63,12 @@ const RightSidebar = () => {
                   />
                 </div>
                 <div className="hidden xl:block">
-                  <p className="flex gap-1 items-center text-md font-bold text-gray-200 lowercase">
-                    {user.userName.replace(" ", "")}{" "}
+                  <p className="flex gap-1 items-center text-base font-bold text-gray-600 capitalize">
+                    {user.userName}
                     {/* <GoVerified className="text-blue-400" /> */}
                   </p>
-                  <p className="flex gap-1 items-center text-xs font-bold text-gray-400 capitalize">
-                    {user.userName}
+                  <p className="flex gap-1 items-center text-xs font-bold text-gray-400 lowercase">
+                    @{user.userName.replace(" ", "")}
                   </p>
                 </div>
               </div>
