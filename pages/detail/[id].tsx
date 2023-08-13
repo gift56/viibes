@@ -125,7 +125,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
         </div>
       </div>
       <div className="lg:h-screen overflow-y-auto w-full lg:flex-[1.2]">
-        <div className="relative  w-full">
+        <div className="relative w-full">
           <div className="mt-10">
             <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
               <div className="ml-4 md:20 md:h-20 w-16 h-16">
