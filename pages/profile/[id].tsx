@@ -13,6 +13,10 @@ interface UserProps {
 }
 
 const Profilepage = ({ data }: UserProps) => {
+  const [showUserVideos, setShowUserVideos] = useState(true);
+  const [videosList, setVideosList] = useState<Video[]>([]);
+  const { user, userVideos, userLikedVideos } = data;
+
   return <MainLayout showRight={false}>hello</MainLayout>;
 };
 
