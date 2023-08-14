@@ -34,7 +34,7 @@ const Profilepage = ({ data }: UserProps) => {
     <MainLayout showRight={false}>
       <div className="w-full px-5">
         <div className="w-full pt-6">
-          <div className="flex gap-6 mb-4 bg-white w-full items-center">
+          <div className="flex gap-6 mb-4 w-full items-center">
             <div className="w-16 h-16 md:w-32 md:h-32">
               <img
                 src={user?.image}
@@ -43,7 +43,7 @@ const Profilepage = ({ data }: UserProps) => {
               />
             </div>
             <div className="flex flex-col justify-center">
-              <p className="flex gap-1 items-center text-base font-bold text-gray-800 capitalize md:text-2xl tracking-wider justify-center">
+              <p className="flex gap-1 items-center text-base font-bold text-gray-800  capitalize md:text-2xl tracking-wider justify-center">
                 {user?.userName}
                 {/* <GoVerified className="text-blue-400" /> */}
               </p>
@@ -54,7 +54,7 @@ const Profilepage = ({ data }: UserProps) => {
           </div>
         </div>
         <div>
-          <div className="flex gap-10 mb-10 mt-10 border-b-2 border-gray-200 bg-white w-full">
+          <div className="flex gap-10 mb-10 mt-10 border-b-2 border-gray-200  w-full">
             <p
               className={`text-xl font-semibold cursor-pointer pb-2 mt-2 ${videos}`}
               onClick={() => setShowUserVideos(true)}
