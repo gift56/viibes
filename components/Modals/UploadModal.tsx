@@ -26,7 +26,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
   >();
   const [caption, setCaption] = useState("");
   const [cartegory, setCartegory] = useState(topics[0].name);
-  const [savingPost, setSavingPost] = useState(false);
+  // const [savingPost, setSavingPost] = useState(false);
   const { userProfile } = useAuthStore();
   const router = useRouter();
 
@@ -54,7 +54,6 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
 
   const handlePost = async () => {
     if (caption && videoAsset?._id && cartegory) {
-      setSavingPost(true);
       const document = {
         _type: "post",
         caption,
