@@ -124,183 +124,185 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
         show ? "flex" : "hidden"
       }`}
     >
-      {userProfile ? (
-        <motion.div
-          ref={modalRef}
-          animate={show ? "open" : "closed"}
-          variants={variants}
-          className="lg:w-[850px] w-[90%] bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4 lg:px-10"
-        >
-          <div className="w-full flex items-center justify-between gap-4">
-            <div className="flex flex-col items-start justify-start w-full">
-              <p className="text-2xl font-bold">Upload a Video</p>
-              <p className="text-md text-gray-400">
-                Post videos to your account
-              </p>
-            </div>
-            <span
-              onClick={() => {
-                setShow(false);
-              }}
-              className="w-12 h-12 hover:bg-gray-400 flex items-center justify-center rounded-lg text-red-500 cursor-pointer hover:text-white transition-all duration-300"
-            >
-              <MdClose
-                size={20}
-                className="hover:rotate-180 transition-all duration-300"
-              />
-            </span>
-          </div>
-
-          <div className="w-full grid grid-cols-1 justify-start items-center md:grid-cols-2 md:justify-between gap-6">
-            <div className="w-full">
-              <div
-                className={`border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-none w-[260px] h-[400px] cursor-pointer hover:bg-gray-100 transition-all ${
-                  videoAsset?.url ? "p-0" : "p-10"
-                }`}
+      <div ref={modalRef}>
+        {userProfile ? (
+          <motion.div
+            animate={show ? "open" : "closed"}
+            variants={variants}
+            className="lg:w-[850px] w-[90%] bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4 lg:px-10"
+          >
+            <div className="w-full flex items-center justify-between gap-4">
+              <div className="flex flex-col items-start justify-start w-full">
+                <p className="text-2xl font-bold">Upload a Video</p>
+                <p className="text-md text-gray-400">
+                  Post videos to your account
+                </p>
+              </div>
+              <span
+                onClick={() => {
+                  setShow(false);
+                }}
+                className="flex items-center justify-center rounded-lg text-secondary cursor-pointer"
               >
-                {isLoading ? (
-                  <p>Uploading{dots}</p>
-                ) : (
-                  <div>
-                    {videoAsset ? (
-                      <div className="w-full">
-                        <video
-                          src={videoAsset?.url}
-                          loop
-                          controls
-                          className="rounded-xl h-[400px] bg-black w-full"
-                        ></video>
-                      </div>
-                    ) : (
-                      <label className="cursor-pointer">
-                        <div className="flex flex-col items-center justify-center">
-                          <p className="font-bold text-xl">
-                            <FaCloudDownloadAlt className="text-gray-300 text-6xl" />
-                          </p>
-                          <p className="font-semibold text-xl">Upload Video</p>
+                <MdClose
+                  size={29}
+                  className="hover:rotate-180 transition-all duration-300"
+                />
+              </span>
+            </div>
+
+            <div className="w-full grid grid-cols-1 justify-start items-center md:grid-cols-2 md:justify-between gap-6">
+              <div className="w-full">
+                <div
+                  className={`border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-none w-[260px] h-[400px] cursor-pointer hover:bg-gray-100 transition-all ${
+                    videoAsset?.url ? "p-0" : "p-10"
+                  }`}
+                >
+                  {isLoading ? (
+                    <p>Uploading{dots}</p>
+                  ) : (
+                    <div>
+                      {videoAsset ? (
+                        <div className="w-full">
+                          <video
+                            src={videoAsset?.url}
+                            loop
+                            controls
+                            className="rounded-xl h-[400px] bg-black w-full"
+                          ></video>
                         </div>
-                        <p className="text-gray-400 text-center mt-10 text-sm leading-10">
-                          MP4 or WebM or ogg <br />
-                          720x1280 or higher <br />
-                          Up to 10 minutes <br />
-                          Less than 2GB
-                        </p>
-                        <p className="bg-secondary text-center mt-10 rounded text-white text-md font-medium p-2 w-25 outline-none">
-                          Select File
-                        </p>
-                        <input
-                          type="file"
-                          name="upload-video"
-                          onChange={uploadVideo}
-                          className="w-0 h-0 hidden"
-                          accept="video/mp4, video/webm, video/ogg"
-                        />
-                      </label>
-                    )}
-                  </div>
+                      ) : (
+                        <label className="cursor-pointer">
+                          <div className="flex flex-col items-center justify-center">
+                            <p className="font-bold text-xl">
+                              <FaCloudDownloadAlt className="text-gray-300 text-6xl" />
+                            </p>
+                            <p className="font-semibold text-xl">
+                              Upload Video
+                            </p>
+                          </div>
+                          <p className="text-gray-400 text-center mt-10 text-sm leading-10">
+                            MP4 or WebM or ogg <br />
+                            720x1280 or higher <br />
+                            Up to 10 minutes <br />
+                            Less than 2GB
+                          </p>
+                          <p className="bg-secondary text-center mt-10 rounded text-white text-md font-medium p-2 w-25 outline-none">
+                            Select File
+                          </p>
+                          <input
+                            type="file"
+                            name="upload-video"
+                            onChange={uploadVideo}
+                            className="w-0 h-0 hidden"
+                            accept="video/mp4, video/webm, video/ogg"
+                          />
+                        </label>
+                      )}
+                    </div>
+                  )}
+                </div>
+                {wrongFileType && (
+                  <p className="font-semibold w-[250px] text-center text-red-400 text-xl mt-4">
+                    Please select a video file
+                  </p>
+                )}
+                {videoAsset?.url && (
+                  <label className="bg-[#f51997] mt-5 rounded text-white text-md font-medium py-2 w-fit px-10 cursor-pointer block">
+                    Change Video
+                    <input
+                      type="file"
+                      name="upload-video"
+                      onChange={uploadVideo}
+                      className="w-0 h-0 hidden"
+                      accept="video/mp4, video/webm, video/ogg"
+                    />
+                  </label>
                 )}
               </div>
-              {wrongFileType && (
-                <p className="font-semibold w-[250px] text-center text-red-400 text-xl mt-4">
-                  Please select a video file
-                </p>
-              )}
-              {videoAsset?.url && (
-                <label className="bg-[#f51997] mt-5 rounded text-white text-md font-medium py-2 w-fit px-10 cursor-pointer block">
-                  Change Video
+
+              <div className="flex flex-col gap-3 pb-10 w-full lg:w-max">
+                <div className="flex flex-col items-start justify-start w-full gap-2">
+                  <label className="text-base font-medium">Caption</label>
                   <input
-                    type="file"
-                    name="upload-video"
-                    onChange={uploadVideo}
-                    className="w-0 h-0 hidden"
-                    accept="video/mp4, video/webm, video/ogg"
+                    type="text"
+                    value={caption}
+                    onChange={(e) => setCaption(e.target.value)}
+                    placeholder="Describe your video"
+                    className="p-2 rounded-lg outline-none text-base border border-gray-200  w-full h-12 px-4 focus:border-secondary"
                   />
-                </label>
-              )}
+                </div>
+
+                <div className="flex flex-col items-start justify-start w-full gap-2">
+                  <label className="text-base font-medium">
+                    Choose a Catergory
+                  </label>
+                  <select
+                    className="rounded-lg outline-none text-base font-medium capitalize border border-gray-200 cursor-pointer w-full h-12 px-4 focus:border-secondary"
+                    onChange={(e) => setCartegory(e.target.value)}
+                  >
+                    {topics.map((topic) => (
+                      <option
+                        key={topic.name}
+                        className="capitalize outline-none bg-white text-gray-700 text-base font-medium p-2 hover:bg-slate-300"
+                        value={topic.name}
+                      >
+                        {topic.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex gap-6 mt-10">
+                  <button
+                    onClick={() => router.push("/")}
+                    type="button"
+                    className="text-md border-2 font-medium p-2 rounded w-28 lg:w-44 outline-none border-gray-300"
+                  >
+                    Discard
+                  </button>
+
+                  <button
+                    onClick={handlePost}
+                    type="button"
+                    className="text-md border-2 font-medium p-2 rounded  w-28 lg:w-44 outline-none bg-secondary text-white border-secondary"
+                  >
+                    Post
+                  </button>
+                </div>
+              </div>
             </div>
-
-
-            <div className="flex flex-col gap-3 pb-10 w-full lg:w-max">
-              <div className="flex flex-col items-start justify-start w-full gap-2">
-                <label className="text-base font-medium">Caption</label>
-                <input
-                  type="text"
-                  value={caption}
-                  onChange={(e) => setCaption(e.target.value)}
-                  placeholder="Describe your video"
-                  className="p-2 rounded-lg outline-none text-base border border-gray-200  w-full h-12 px-4 focus:border-secondary"
+          </motion.div>
+        ) : (
+          <motion.div
+            animate={show ? "open" : "closed"}
+            variants={variants}
+            className="w-fit bg-white rounded-lg flex items-center justify-center flex-col gap-3 transition-all duration-300 overflow-y-auto p-4"
+          >
+            <div className="w-full flex items-center justify-center">
+              <span
+                onClick={() => {
+                  setShow(false);
+                }}
+                className="w-12 h-12 hover:bg-gray-400 flex items-center justify-center rounded-lg text-red-500 cursor-pointer hover:text-white transition-all duration-300"
+              >
+                <MdClose
+                  size={20}
+                  className="hover:rotate-180 transition-all duration-300"
                 />
-              </div>
-
-              <div className="flex flex-col items-start justify-start w-full gap-2">
-                <label className="text-base font-medium">
-                  Choose a Catergory
-                </label>
-                <select
-                  className="rounded-lg outline-none text-base font-medium capitalize border border-gray-200 cursor-pointer w-full h-12 px-4 focus:border-secondary"
-                  onChange={(e) => setCartegory(e.target.value)}
-                >
-                  {topics.map((topic) => (
-                    <option
-                      key={topic.name}
-                      className="capitalize outline-none bg-white text-gray-700 text-base font-medium p-2 hover:bg-slate-300"
-                      value={topic.name}
-                    >
-                      {topic.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="flex gap-6 mt-10">
-                <button
-                  onClick={() => router.push("/")}
-                  type="button"
-                  className="text-md border-2 font-medium p-2 rounded w-28 lg:w-44 outline-none border-gray-300"
-                >
-                  Discard
-                </button>
-
-                <button
-                  onClick={handlePost}
-                  type="button"
-                  className="text-md border-2 font-medium p-2 rounded  w-28 lg:w-44 outline-none bg-secondary text-white border-secondary"
-                >
-                  Post
-                </button>
-              </div>
+              </span>
             </div>
-          </div>
-        </motion.div>
-      ) : (
-        <motion.div
-          animate={show ? "open" : "closed"}
-          variants={variants}
-          className="w-fit bg-white rounded-lg flex items-center justify-center flex-col gap-3 transition-all duration-300 overflow-y-auto p-4"
-        >
-          <div className="w-full flex items-center justify-center">
-            <span
-              onClick={() => {
-                setShow(false);
-              }}
-              className="w-12 h-12 hover:bg-gray-400 flex items-center justify-center rounded-lg text-red-500 cursor-pointer hover:text-white transition-all duration-300"
-            >
-              <MdClose
-                size={20}
-                className="hover:rotate-180 transition-all duration-300"
-              />
-            </span>
-          </div>
-          <h2 className="text-2xl font-semibold text-gray-800">
-            Connect with <b>Viibe</b>
-          </h2>
-          <p className="text-sm md:text-base font-normal text-gray-600 text-center">
-            Join Viibe, the fastest and easiest way to make upload and <br />{" "}
-            share the fun with friends and the world through videos
-          </p>
-          <ConnectAccount />
-        </motion.div>
-      )}
+            <h2 className="text-2xl font-semibold text-gray-800">
+              Connect with <b>Viibe</b>
+            </h2>
+            <p className="text-sm md:text-base font-normal text-gray-600 text-center">
+              Join Viibe, the fastest and easiest way to make upload and <br />{" "}
+              share the fun with friends and the world through videos
+            </p>
+            <ConnectAccount />
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 };
