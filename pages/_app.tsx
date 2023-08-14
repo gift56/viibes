@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "@/styles/globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Head from "next/head";
+import { ThemeProvider } from "next-themes";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isSSR, setIsSSR] = useState(true);
@@ -38,7 +39,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <GoogleOAuthProvider
         clientId={`${process.env.NEXT_PUBLIC_GOGGLE_API_TOKEN}`}
       >
-        <Component {...pageProps} />
+        <ThemeProvider attribute="class">
+          <Component {...pageProps} />
+        </ThemeProvider>
       </GoogleOAuthProvider>
     </>
   );
