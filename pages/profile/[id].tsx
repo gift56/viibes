@@ -18,9 +18,13 @@ const Profilepage = ({ data }: UserProps) => {
   const [videosList, setVideosList] = useState<Video[]>([]);
   const { user, userVideos, userLikedVideos } = data;
 
-  const videos = showUserVideos ? "border-b-2 border-black" : "text-gray-400";
+  const videos = showUserVideos
+    ? "border-b-2 border-black dark:border-secondary"
+    : "text-gray-400";
 
-  const liked = !showUserVideos ? "border-b-2 border-black" : "text-gray-400";
+  const liked = !showUserVideos
+    ? "border-b-2 border-black dark:border-secondary"
+    : "text-gray-400";
 
   useEffect(() => {
     if (showUserVideos) {
@@ -43,11 +47,11 @@ const Profilepage = ({ data }: UserProps) => {
               />
             </div>
             <div className="flex flex-col justify-center">
-              <p className="flex gap-1 items-center text-base font-bold text-gray-800  capitalize md:text-2xl tracking-wider justify-center">
+              <p className="flex gap-1 items-center text-base font-bold text-gray-800 dark:text-white capitalize md:text-2xl tracking-wider justify-center">
                 {user?.userName}
                 {/* <GoVerified className="text-blue-400" /> */}
               </p>
-              <p className="flex gap-1 items-center text-xs font-bold text-gray-400  lowercase md:text-xl">
+              <p className="flex gap-1 items-center text-xs font-bold text-gray-400 lowercase md:text-xl">
                 @{user?.userName.replace(" ", "")}
               </p>
             </div>
