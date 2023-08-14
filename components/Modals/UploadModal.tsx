@@ -129,7 +129,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
           ref={modalRef}
           animate={show ? "open" : "closed"}
           variants={variants}
-          className="lg:w-[850px] w-[90%] bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4"
+          className="lg:w-[850px] w-[90%] bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4 lg:px-10"
         >
           <div className="w-full flex items-center justify-between gap-4">
             <div className="flex flex-col items-start justify-start w-full">
@@ -150,6 +150,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
               />
             </span>
           </div>
+
           <div className="w-full grid grid-cols-1 justify-start items-center md:grid-cols-2 md:justify-between gap-6">
             <div className="w-full">
               <div
@@ -248,6 +249,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                   ))}
                 </select>
               </div>
+
               <div className="flex gap-6 mt-10">
                 <button
                   onClick={() => router.push("/")}
