@@ -11,6 +11,7 @@ import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import useAuthStore from "@/store";
 import { createOrGetGoogleUser } from "@/utils";
 import { FiChevronDown } from "react-icons/fi";
+import { BiSearch } from "react-icons/bi";
 
 const LeftSideBar = () => {
   const { userProfile, addUser, removeUser } = useAuthStore();
@@ -18,6 +19,7 @@ const LeftSideBar = () => {
   const [dropDownTopics, setDropDownTopics] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const [logOut, setLogOut] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const handleClickOutside: EventListener = (event) => {
@@ -45,6 +47,14 @@ const LeftSideBar = () => {
   const router = useRouter();
 
   const { topic } = router.query;
+
+  const handleSearch = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    if (searchValue) {
+      router.push(`/search/${searchValue}`);
+    }
+  };
 
   const activeTopicStyle =
     "xl:border-2 hover:bg-gray-300 xl:border-[#f51997] px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-start cursor-pointer text-[#f51997] w-full";
@@ -196,6 +206,24 @@ const LeftSideBar = () => {
                 />
               </div>
             )}
+            <form
+              onSubmit={handleSearch}
+              className="w-full flex items-center border-b-2 border-gray-200 pb-3 gap-3"
+            >
+              <input
+                type="text"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                className="bg-transparent text-sm font-medium outline-none w-[90%]"
+                placeholder="Search Videos or user accounts"
+              />
+              <button
+                onClick={handleSearch}
+                className="border-l-2 border-gray-300 text-2xl text-gray-400 pl-3"
+              >
+                <BiSearch />
+              </button>
+            </form>
             <div className="w-full flex flex-col h-[80vh] overflow-y-auto">
               <div className="xl:border-b-2 border-gray-200 xl:pb-2">
                 <div onClick={() => setDropDownTopics((prev) => !prev)}>
