@@ -31,7 +31,7 @@ const Profilepage = ({ data }: UserProps) => {
 
   return (
     <MainLayout showRight={false}>
-      <div>
+      <div className="w-full px-5">
         <div className="w-full pt-6">
           <div className="flex gap-6 mb-4 bg-white w-full items-center">
             <div className="w-16 h-16 md:w-32 md:h-32">
