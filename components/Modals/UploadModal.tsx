@@ -224,7 +224,8 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                   type="text"
                   value={caption}
                   onChange={(e) => setCaption(e.target.value)}
-                  className="p-2 rounded-lg outline-none text-base border-2 border-gray-200  w-full h-12 px-4 focus:border-secondary"
+                  placeholder="Describe your video"
+                  className="p-2 rounded-lg outline-none text-base border border-gray-200  w-full h-12 px-4 focus:border-secondary"
                 />
               </div>
 
@@ -233,7 +234,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                   Choose a Catergory
                 </label>
                 <select
-                  className="rounded-lg outline-none text-base font-medium capitalize border-2 border-gray-200 cursor-pointer w-full h-12 px-4 focus:border-secondary"
+                  className="rounded-lg outline-none text-base font-medium capitalize border border-gray-200 cursor-pointer w-full h-12 px-4 focus:border-secondary"
                   onChange={(e) => setCartegory(e.target.value)}
                 >
                   {topics.map((topic) => (
