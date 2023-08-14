@@ -126,7 +126,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
 
   return (
     <>
-      <div className="flex w-full bg-white flex-wrap md:flex-nowrap md:h-screen md:overflow-hidden">
+      <div className="flex w-full bg-white dark:bg-[#171818] flex-wrap md:flex-nowrap md:h-screen md:overflow-hidden">
         <div className="relative flex-2 w-full md:w-9/12 flex justify-center items-center bg-blurred-img bg-no-repeat bg-cover bg-center lg:flex-[2]">
           <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50">
             <p className="cursor-pointer" onClick={() => router.back()}>
@@ -181,11 +181,11 @@ const VideoDetail = ({ postDetails }: PostProps) => {
                   <div>
                     <Link href={`/profile/${post.postedBy._id}`}>
                       <div className="flex flex-col gap-1 mt-1">
-                        <p className="flex items-center gap-2  md:text-md font-bold text-gray-800">
+                        <p className="flex items-center gap-2 md:text-md font-bold text-gray-800 dark:text-white">
                           {post.postedBy.userName}
                           {/* <GoVerified className="text-blue-400 text-md" /> */}
                         </p>
-                        <p className="font-medium text-sm text-gray-500 lowercase">
+                        <p className="font-medium text-sm text-gray-500 dark:text-gray-200 lowercase">
                           @{post.postedBy.userName.replace(" ", "")}
                         </p>
                       </div>
@@ -206,13 +206,13 @@ const VideoDetail = ({ postDetails }: PostProps) => {
                     <motion.div
                       animate={dropDown === post._id ? "open" : "closed"}
                       variants={variants}
-                      className={`w-[200px] bg-white border border-gray-400 flex-col items-start rounded-xl overflow-hidden absolute right-0 z-10 ${
+                      className={`w-[200px] bg-white dark:bg-gray-800 border border-gray-400 flex-col items-start rounded-xl overflow-hidden absolute right-0 z-10 ${
                         dropDown === post._id ? "flex" : "hidden"
                       }`}
                     >
                       <div
                         onClick={() => setDeleteModal(true)}
-                        className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300"
+                        className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
                       >
                         <span>
                           <BsFillTrash3Fill size={20} />
@@ -224,7 +224,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
                 )}
               </div>
 
-              <p className="px-10 text-lg text-gray-600 font-medium">
+              <p className="px-10 text-lg text-gray-600 dark:text-gray-200 font-medium">
                 {post.caption}
               </p>
               <div className="mt-5 px-10">

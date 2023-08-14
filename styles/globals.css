@@ -7,11 +7,6 @@ a {
   text-decoration: none;
 }
 
-body,
-html {
-  @apply bg-white dark:bg-black;
-}
-
 .videos::-webkit-scrollbar {
   width: 0px;
 }
