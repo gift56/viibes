@@ -98,12 +98,12 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
                   {post.postedBy.userName} {` `}
                   {/* <GoVerified className="text-blue-400 text-md" /> */}
                 </p>
-                <p className="capitalize font-medium text-xs text-gray-500 hidden md:block dark:text-gray-300">
-                  {post.postedBy.userName}
+                <p className="lowercase font-medium text-xs text-gray-500 hidden md:block dark:text-gray-300">
+                  @{post.postedBy.userName.replace(" ", "")}
                 </p>
               </div>
             </Link>
-            <p className="text-gray-600 font-medium md:text-base mt-1 md:mt-3">
+            <p className="text-gray-600 font-medium md:text-base mt-1 md:mt-3 dark:text-gray-200">
               {post.caption}
             </p>
           </div>
@@ -118,7 +118,7 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
           <motion.div
             animate={dropDown === post._id ? "open" : "closed"}
             variants={variants}
-            className={`w-[200px] bg-white border border-gray-400 flex-col items-start rounded-xl overflow-hidden absolute right-0 z-10 ${
+            className={`w-[200px] bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-600 flex-col items-start rounded-xl overflow-hidden absolute right-0 z-10 ${
               dropDown === post._id ? "flex" : "hidden"
             }`}
           >
@@ -137,7 +137,7 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
                 download
                 target="_blank"
                 rel="noreferrer noopener"
-                className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 border-b border-gray-400 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
+                className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
               >
                 <span>
                   <BsDownload size={20} />
