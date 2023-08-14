@@ -185,7 +185,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                           Up to 10 minutes <br />
                           Less than 2GB
                         </p>
-                        <p className="bg-[#f51997] text-center mt-10 rounded text-white text-md font-medium p-2 w-25 outline-none">
+                        <p className="bg-secondary text-center mt-10 rounded text-white text-md font-medium p-2 w-25 outline-none">
                           Select File
                         </p>
                         <input
@@ -218,6 +218,8 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                 </label>
               )}
             </div>
+
+
             <div className="flex flex-col gap-3 pb-10 w-full lg:w-max">
               <div className="flex flex-col items-start justify-start w-full gap-2">
                 <label className="text-base font-medium">Caption</label>
@@ -262,7 +264,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                 <button
                   onClick={handlePost}
                   type="button"
-                  className="text-md border-2 font-medium p-2 rounded  w-28 lg:w-44 outline-none bg-[#f51997] text-white border-[#f51997]"
+                  className="text-md border-2 font-medium p-2 rounded  w-28 lg:w-44 outline-none bg-secondary text-white border-secondary"
                 >
                   Post
                 </button>
