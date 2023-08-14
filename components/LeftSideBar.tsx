@@ -197,14 +197,14 @@ const LeftSideBar = () => {
             )}
             <div className="w-full flex flex-col h-[80vh] overflow-y-auto">
               <div className="xl:border-b-2 border-gray-200 xl:pb-2">
-                <Link href="/">
+                <div onClick={() => setMobileNav(false)}>
                   <div className="flex items-center justify-start xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 hover:bg-primary p-3">
                     <p className="text-2xl">
                       <AiFillHome />
                     </p>
                     <span className="text-xl block">Follow Topics</span>
                   </div>
-                </Link>
+                </div>
               </div>
               <div className="xl:border-b-2 xl:border-gray-200 py-4">
                 <div className="flex gap-3 flex-col items-start justify-start">
@@ -213,6 +213,7 @@ const LeftSideBar = () => {
                       href={`/?topic=${item.name}`}
                       key={item.name}
                       className="w-full"
+                      onClick={() => setMobileNav(false)}
                     >
                       <div
                         className={
