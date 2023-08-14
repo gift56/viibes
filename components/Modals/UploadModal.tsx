@@ -218,28 +218,35 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
               )}
             </div>
             <div className="flex flex-col gap-3 pb-10 w-full lg:w-max">
-              <label className="text-md font-medium">Caption</label>
-              <input
-                type="text"
-                value={caption}
-                onChange={(e) => setCaption(e.target.value)}
-                className="p-2 rounded outline-none text-md border-2 border-gray-200"
-              />
-              <label className="text-md font-medium">Choose a Catergory</label>
-              <select
-                className="p-2 rounded outline-none text-md capitalize border-2 border-gray-200 lg:p-4 cursor-pointer"
-                onChange={(e) => setCartegory(e.target.value)}
-              >
-                {topics.map((topic) => (
-                  <option
-                    key={topic.name}
-                    className="capitalize outline-none bg-white text-gray-700 text-md p-2 hover:bg-slate-300"
-                    value={topic.name}
-                  >
-                    {topic.name}
-                  </option>
-                ))}
-              </select>
+              <div className="flex flex-col items-start justify-start w-full gap-2">
+                <label className="text-base font-medium">Caption</label>
+                <input
+                  type="text"
+                  value={caption}
+                  onChange={(e) => setCaption(e.target.value)}
+                  className="p-2 rounded-lg outline-none text-base border-2 border-gray-200  w-full h-12 px-4 focus:border-secondary"
+                />
+              </div>
+
+              <div className="flex flex-col items-start justify-start w-full gap-2">
+                <label className="text-base font-medium">
+                  Choose a Catergory
+                </label>
+                <select
+                  className="rounded-lg outline-none text-base font-medium capitalize border-2 border-gray-200 cursor-pointer w-full h-12 px-4 focus:border-secondary"
+                  onChange={(e) => setCartegory(e.target.value)}
+                >
+                  {topics.map((topic) => (
+                    <option
+                      key={topic.name}
+                      className="capitalize outline-none bg-white text-gray-700 text-base font-medium p-2 hover:bg-slate-300"
+                      value={topic.name}
+                    >
+                      {topic.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
               <div className="flex gap-6 mt-10">
                 <button
                   onClick={() => router.push("/")}
