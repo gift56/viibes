@@ -129,7 +129,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
           <motion.div
             animate={show ? "open" : "closed"}
             variants={variants}
-            className="lg:w-[850px] w-[90%] bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4 lg:px-10"
+            className="lg:w-[850px] w-[90%] bg-white dark:bg-gray-900 rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4 lg:px-10"
           >
             <div className="w-full flex items-center justify-between gap-4">
               <div className="flex flex-col items-start justify-start w-full">
@@ -142,7 +142,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                 onClick={() => {
                   setShow(false);
                 }}
-                className="flex items-center justify-center rounded-lg text-secondary cursor-pointer"
+                className="flex items-center justify-center rounded-lg text-secondary cursor-pointer dark:text-white"
               >
                 <MdClose
                   size={29}
@@ -229,7 +229,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
                     placeholder="Describe your video"
-                    className="p-2 rounded-lg outline-none text-base border border-gray-200  w-full h-12 px-4 focus:border-secondary"
+                    className="p-2 rounded-lg outline-none text-base border border-gray-200 w-full h-12 px-4 focus:border-secondary dark:bg-gray-800 dark:text-white dark:placeholder:text-white dark:border-white"
                   />
                 </div>
 
@@ -238,7 +238,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
                     Choose a Catergory
                   </label>
                   <select
-                    className="rounded-lg outline-none text-base font-medium capitalize border border-gray-200 cursor-pointer w-full h-12 px-4 focus:border-secondary"
+                    className="rounded-lg outline-none text-base font-medium capitalize border border-gray-200 cursor-pointer w-full h-12 px-4 focus:border-secondary dark:bg-gray-800 dark:text-white dark:placeholder:text-white dark:border-white"
                     onChange={(e) => setCartegory(e.target.value)}
                   >
                     {topics.map((topic) => (

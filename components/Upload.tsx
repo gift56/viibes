@@ -10,15 +10,14 @@ const Upload = () => {
   return (
     <>
       {userProfile && (
-        <div className="w-full flex flex-col items-start justify-start gap-4 shadow-paginationShad pb-2">
+        <div className="w-full flex flex-col items-start justify-start gap-4 shadow-paginationShad pb-1">
           <div className="w-full flex items-center justify-between md:justify-start gap-5 p-6 pt-2 border-b">
-            {/* <Link href={`/profile/${post.postedBy._id}`}></Link> */}
             <img
               src={userProfile ? userProfile?.image : "/avatar.png"}
               alt="avatar"
               className="w-10 h-10 object-contain rounded-full"
             />
-            <div className="w-full cursor-pointer items-center justify-start gap-2 select-none text-gray-600 hidden sm:flex">
+            <div className="w-full cursor-pointer items-center justify-start gap-2 select-none text-gray-600 hidden sm:flex dark:text-gray-100">
               <span className="text-base font-normal">Upload a video</span>
               <span>
                 <HiOutlinePencilSquare />
