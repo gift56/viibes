@@ -19,38 +19,15 @@ const SettingsModal = ({ show, setShow, setChange }: ModalProp) => {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
 
-  const renderThemeChangerIcon = () => {
-    if (currentTheme === "dark") {
-      return (
-        <button
-          type="button"
-          className="bg-gray-200 dark:bg-gray-600 p-2 rounded-md hover:ring-2 hover:ring-gray-300 dark:hover:ring-gray-600"
-          onClick={() => setTheme("light")}
-        >
-          <HiOutlineSun fontSize={17} />
-        </button>
-      );
-    } else {
-      return (
-        <button
-          type="button"
-          className="bg-gray-200 p-2 rounded-md hover:ring-2 hover:ring-gray-300"
-          onClick={() => setTheme("dark")}
-        >
-          <HiMoon fontSize={16} />
-        </button>
-      );
-    }
-  };
 
   return (
     <div
       className={`fixed top-0 right-0 w-full h-full bg-[#00000085] z-40 place-items-center flex justify-center transition-all duration-500 overflow-auto ${
-        show ? "flex" : "flex"
+        show ? "flex" : "hidden"
       }`}
     >
       <motion.div
-        animate={show ? "open" : "open"}
+        animate={show ? "open" : "closed"}
         variants={variants}
         className="lg:w-fit w-[90%] bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300  overflow-y-auto p-4"
       >
@@ -72,6 +49,7 @@ const SettingsModal = ({ show, setShow, setChange }: ModalProp) => {
         </h2>
         <div className="flex items-center justify-between gap-5 flex-col md:flex-row bg-gray-200 px-4 w-full rounded-md md:h-20 py-4">
           <div
+            onClick={() => setTheme("light")}
             className={`flex items-center justify-start gap-3 cursor-pointer bg-white h-12 md:h-[60%] rounded-lg px-4 ${
               currentTheme === "light" && "border-2 border-blue-600"
             }`}
@@ -82,6 +60,7 @@ const SettingsModal = ({ show, setShow, setChange }: ModalProp) => {
             <span className="text-lg font-semibold select-none">Light</span>
           </div>
           <div
+            onClick={() => setTheme("dark")}
             className={`flex items-center justify-start gap-3 cursor-pointer bg-gray-600 h-12 md:h-[60%] rounded-lg px-4 text-white ${
               currentTheme === "dark" && "border-2 border-blue-600"
             }`}
