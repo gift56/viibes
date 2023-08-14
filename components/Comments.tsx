@@ -81,10 +81,10 @@ const Comments = ({
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="Add comment..."
-              className="bg-gray-200 px-6 py-4 text-md font-medium border-2 w-[100%] md:w-[500px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg"
+              className="bg-gray-100 px-6 py-4 text-base font-medium border w-[100%] md:w-[500px] lg:w-[350px] border-gray-100 focus:outline-none flex-1 rounded-lg focus:border-secondary"
             />
             <button
-              className="text-base text-gray-100 bg-secondary text-center rounded text-md font-medium py-3 px-3 w-fit outline-none"
+              className="text-base text-gray-100 bg-secondary text-center rounded font-medium px-7 w-fit outline-none"
               onClick={addComment}
             >
               {postingComment ? "Commenting..." : "Comment"}
