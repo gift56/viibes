@@ -39,9 +39,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <GoogleOAuthProvider
         clientId={`${process.env.NEXT_PUBLIC_GOGGLE_API_TOKEN}`}
       >
-        <ThemeProvider attribute="class">
+        {/* <ThemeProvider attribute="class"> */}
           <Component {...pageProps} />
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </GoogleOAuthProvider>
     </>
   );

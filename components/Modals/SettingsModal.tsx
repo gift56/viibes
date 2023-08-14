@@ -1,4 +1,6 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { MdClose } from "react-icons/md";
 
 interface ModalProp {
   show: boolean;
