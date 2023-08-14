@@ -3,6 +3,7 @@ import { IUser, Video } from "@/types";
 import { BASE_URL } from "@/utils";
 import axios from "axios";
 import MainLayout from "@/layouts/MainLayout";
+import { NoResult, VideoCard } from "@/components";
 
 interface UserProps {
   data: {
@@ -50,6 +51,33 @@ const Profilepage = ({ data }: UserProps) => {
                 @{user?.userName.replace(" ", "")}
               </p>
             </div>
+          </div>
+        </div>
+        <div>
+          <div className="flex gap-10 mb-10 mt-10 border-b-2 border-gray-200 bg-white w-full">
+            <p
+              className={`text-xl font-semibold cursor-pointer pb-2 mt-2 ${videos}`}
+              onClick={() => setShowUserVideos(true)}
+            >
+              Videos
+            </p>
+            <p
+              className={`text-xl font-semibold cursor-pointer pb-2 mt-2 ${liked}`}
+              onClick={() => setShowUserVideos(false)}
+            >
+              Liked
+            </p>
+          </div>
+          <div className="flex gap-6 flex-wrap md:justify-start">
+            {videosList.length > 0 ? (
+              videosList.map((post: Video, index: number) => (
+                <VideoCard key={index} post={post} />
+              ))
+            ) : (
+              <NoResult
+                text={`No ${showUserVideos ? "" : "Liked"} Videos Yet`}
+              />
+            )}
           </div>
         </div>
       </div>
