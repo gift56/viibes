@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { MdClose } from "react-icons/md";
 import { useTheme } from "next-themes";
@@ -18,7 +18,27 @@ const variants = {
 const SettingsModal = ({ show, setShow, setChange }: ModalProp) => {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
+  const modalRef = useRef<any>(null);
 
+  useEffect(() => {
+    if (show) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        setShow(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [show]);
 
   return (
     <div
@@ -29,6 +49,7 @@ const SettingsModal = ({ show, setShow, setChange }: ModalProp) => {
       <motion.div
         animate={show ? "open" : "closed"}
         variants={variants}
+        ref={modalRef}
         className="lg:w-fit w-[90%] bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300  overflow-y-auto p-4"
       >
         <div className="w-full flex items-center justify-end">
