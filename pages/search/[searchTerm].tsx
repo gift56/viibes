@@ -18,9 +18,9 @@ const Searchpage = ({ videos }: SearchProps) => {
   const { searchTerm }: any = router.query;
   const { allUsers } = useAuthStore();
 
-  const Accounts = isAccount ? "border-b-2 border-black" : "text-gray-400";
+  const Accounts = isAccount ? "border-b-2 border-black dark:border-secondary" : "text-gray-400";
 
-  const isVideos = !isAccount ? "border-b-2 border-black" : "text-gray-400";
+  const isVideos = !isAccount ? "border-b-2 border-black dark:border-secondary" : "text-gray-400";
 
   const searchedAccounts = allUsers.filter((user: IUser) =>
     user.userName.toLowerCase().includes(searchTerm.toLowerCase())
@@ -29,7 +29,7 @@ const Searchpage = ({ videos }: SearchProps) => {
   return (
     <MainLayout showRight={false}>
       <div className="w-full px-5">
-        <div className="flex gap-10 my-6 border-b-2 border-gray-200 bg-white w-full">
+        <div className="flex gap-10 my-6 border-b-2 border-gray-200 w-full">
           <p
             className={`text-xl font-semibold cursor-pointer pb-2 mt-2 ${Accounts}`}
             onClick={() => setIsAccount(true)}
@@ -49,7 +49,7 @@ const Searchpage = ({ videos }: SearchProps) => {
             {searchedAccounts.length > 0 ? (
               searchedAccounts.map((user: IUser, index: number) => (
                 <Link href={`/profile/${user._id}`} key={index}>
-                  <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200 items-center">
+                  <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded border-b border-gray-200 items-center">
                     <div className="w-16 h-16 md:w-28 md:h-28">
                       <img
                         src={user.image}
