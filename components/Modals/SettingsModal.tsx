@@ -50,14 +50,14 @@ const SettingsModal = ({ show, setShow, setChange }: ModalProp) => {
         animate={show ? "open" : "closed"}
         variants={variants}
         ref={modalRef}
-        className="lg:w-fit w-[90%] bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300  overflow-y-auto p-4"
+        className="lg:w-fit w-[90%] bg-white dark:bg-gray-800 rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300  overflow-y-auto p-4"
       >
         <div className="w-full flex items-center justify-end">
           <span
             onClick={() => {
               setShow(false);
             }}
-            className="flex items-center justify-center rounded-lg text-red-500 cursor-pointer"
+            className="flex items-center justify-center rounded-lg text-red-500 dark:text-white cursor-pointer"
           >
             <MdClose
               size={25}
@@ -65,10 +65,10 @@ const SettingsModal = ({ show, setShow, setChange }: ModalProp) => {
             />
           </span>
         </div>
-        <h2 className="text-lg font-medium text-gray-900 text-center md:text-xl">
+        <h2 className="text-lg font-medium text-gray-900 dark:text-white text-center md:text-xl w-full">
           Customize Your Background
         </h2>
-        <div className="flex items-center justify-between gap-5 flex-col md:flex-row bg-gray-200 px-4 w-full rounded-md md:h-20 py-4 md:py-0">
+        <div className="flex items-center justify-between gap-5 flex-col md:flex-row bg-gray-200 dark:bg-gray-600 px-4 w-full rounded-md md:h-20 py-4 md:py-0">
           <div
             onClick={() => setTheme("light")}
             className={`flex items-center justify-start gap-3 cursor-pointer bg-white h-12 md:h-[60%] rounded-lg px-4 ${
@@ -78,7 +78,9 @@ const SettingsModal = ({ show, setShow, setChange }: ModalProp) => {
             <span className="text-[#fca532]">
               <HiSun size={30} />
             </span>
-            <span className="text-lg font-semibold select-none text-black">Light</span>
+            <span className="text-lg font-semibold select-none text-black">
+              Light
+            </span>
           </div>
           <div
             onClick={() => setTheme("dark")}

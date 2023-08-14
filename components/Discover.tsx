@@ -12,7 +12,7 @@ const Discover = () => {
     "lg:border-2 hover:bg-gray-300 lg:border-secondary px-3 py-2 rounded lg:rounded-full flex items-center gap-2 justify-center cursor-pointer text-secondary";
 
   const topicStyle =
-    "lg:border-2 hover:bg-gray-300 lg:border-gray-300 px-3 py-2 rounded lg:rounded-full flex items-center gap-2 justify-center cursor-pointer text-black";
+    "lg:border-2 hover:bg-gray-300 lg:border-gray-300 px-3 py-2 rounded lg:rounded-full flex items-center gap-2 justify-center cursor-pointer text-black dark:text-white dark:hover:bg-gray-800";
 
   return (
     <div className="lg:border-b-2 lg:border-gray-200 py-6">

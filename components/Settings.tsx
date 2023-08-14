@@ -8,7 +8,7 @@ const Settings = () => {
     <>
       <div
         onClick={() => setOpenSetting(true)}
-        className="w-full pb-16 flex items-center justify-start cursor-pointer gap-4 text-lg font-semibold hover:bg-gray-200 lg:p-4 mt-4 rounded-lg"
+        className="w-full pb-16 flex items-center justify-start cursor-pointer gap-4 text-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 lg:p-4 mt-4 rounded-lg"
       >
         <span>
           <FiSettings size={20} />

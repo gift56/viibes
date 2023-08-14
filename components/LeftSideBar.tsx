@@ -57,10 +57,10 @@ const LeftSideBar = () => {
   };
 
   const activeTopicStyle =
-    "xl:border-2 hover:bg-gray-300 xl:border-secondary px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-start cursor-pointer text-secondary w-full";
+    "px-3 py-2 rounded flex items-center gap-2 justify-start cursor-pointer text-secondary w-full";
 
   const topicStyle =
-    "xl:border-2 hover:bg-gray-300 xl:border-gray-300 px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-start cursor-pointer text-black w-full";
+    "px-3 py-2 rounded flex items-center gap-2 justify-start cursor-pointer text-black w-full dark:text-white";
 
   return (
     <nav className="flex flex-col items-start justify-start gap-4 lg:h-screen py-5 w-full lg:px-4">
@@ -82,7 +82,7 @@ const LeftSideBar = () => {
       <div className="w-full lg:flex flex-col h-[90vh] overflow-y-auto hidden">
         <div className="lg:border-b-2 border-gray-200 xl:pb-2 mx-3">
           <Link href="/">
-            <div className="flex items-center justify-center xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 p-3">
+            <div className="flex items-center justify-center xl:justify-start cursor-pointer font-semibold text-black dark:text-white rounded gap-3 p-3">
               <p className="text-2xl">
                 <AiFillHome />
               </p>
@@ -104,7 +104,7 @@ const LeftSideBar = () => {
                   alt={userProfile?.userName}
                   className="w-10 h-10 rounded-full select-none"
                 />
-                <span className="text-lg font-medium text-gray-700">
+                <span className="text-lg font-medium text-gray-700 dark:text-gray-100">
                   {userProfile?.userName}
                 </span>
                 <span>
@@ -150,10 +150,13 @@ const LeftSideBar = () => {
       >
         <div
           ref={modalRef}
-          className={`flex flex-col h-full gap-5 absolute top-0 p-4 w-[250px] bg-white`}
+          className="flex flex-col h-full gap-5 absolute top-0 p-4 w-[250px] bg-white dark:bg-gray-800"
         >
           <div className="w-full flex items-center justify-end">
-            <span className="text-dark" onClick={() => setMobileNav(false)}>
+            <span
+              className="text-black dark:text-white"
+              onClick={() => setMobileNav(false)}
+            >
               <MdClose size={25} />
             </span>
           </div>
@@ -169,7 +172,7 @@ const LeftSideBar = () => {
                     alt={userProfile?.userName}
                     className="w-10 h-10 rounded-full select-none"
                   />
-                  <span className="text-base font-medium text-gray-700">
+                  <span className="text-base font-medium text-gray-700 dark:text-gray-100">
                     {userProfile?.userName}
                   </span>
                   <span>
@@ -197,7 +200,7 @@ const LeftSideBar = () => {
                 </button>
               </div>
             ) : (
-              <div className="w-full border-b pb-4">
+              <div className="w-full border-b pb-4 px-2">
                 <GoogleLogin
                   onSuccess={(res) => createOrGetGoogleUser(res, addUser)}
                   onError={() => console.log("error")}
@@ -225,7 +228,7 @@ const LeftSideBar = () => {
             <div className="w-full flex flex-col h-[80vh] overflow-y-auto">
               <div className="xl:border-b-2 border-gray-200 xl:pb-2">
                 <div onClick={() => setDropDownTopics((prev) => !prev)}>
-                  <div className="flex items-center justify-start xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 py-3">
+                  <div className="flex items-center justify-start xl:justify-start cursor-pointer font-semibold text-black dark:text-white rounded gap-3 py-3">
                     <p className="text-2xl">
                       <AiFillHome />
                     </p>
@@ -257,10 +260,10 @@ const LeftSideBar = () => {
                           topic === item.name ? activeTopicStyle : topicStyle
                         }
                       >
-                        <span className="text-2xl font-bold xl:text-md">
+                        <span className="text-2xl font-bold xl:text-base">
                           {item.icon}
                         </span>
-                        <span className="font-medium text-md block capitalize">
+                        <span className="font-medium text-base block capitalize">
                           {item.name}
                         </span>
                       </div>
