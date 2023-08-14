@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import axios from "axios";
@@ -29,6 +29,28 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
   // const [savingPost, setSavingPost] = useState(false);
   const { userProfile } = useAuthStore();
   const router = useRouter();
+
+  const modalRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (show) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        setShow(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [show]);
 
   const uploadVideo = async (e: any) => {
     const selectedFile = e.target.files[0];
@@ -104,6 +126,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
     >
       {userProfile ? (
         <motion.div
+          ref={modalRef}
           animate={show ? "open" : "closed"}
           variants={variants}
           className="lg:w-[850px] w-[90%] bg-white rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4"
