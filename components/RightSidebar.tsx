@@ -28,8 +28,7 @@ const RightSidebar = () => {
       <div className="relative hidden lg:block w-full">
         <form
           onSubmit={handleSearch}
-          className="bg-gray-200 w-full flex items-center border-2 border-gray-200 rounded-full p-3 gap-3"
-          // dark:bg-[#1d2225]
+          className="bg-gray-200 dark:bg-[#1d2225] w-full flex items-center border-2 border-gray-200 rounded-full p-3 gap-3"
         >
           <input
             type="text"
@@ -37,7 +36,6 @@ const RightSidebar = () => {
             onChange={(e) => setSearchValue(e.target.value)}
             className="bg-transparent text-sm font-medium outline-none w-[90%]"
             placeholder="Search Videos and accounts"
-            // dark:bg-gray-900 dark:border-gray-800
           />
           <button
             onClick={handleSearch}
@@ -48,13 +46,13 @@ const RightSidebar = () => {
         </form>
       </div>
       <div className="lg:border-b-2 border-gray-200 pb-4 w-full">
-        <p className="text-gray-500 font-semibold hidden m-3 mt-4 lg:block">
+        <p className="text-gray-500 dark:text-white font-semibold hidden m-3 mt-4 lg:block">
           Suggested Accounts
         </p>
         <div>
           {allUsers.slice(0, 6).map((user: IUser) => (
             <Link href={`/profile/${user._id}`} key={user._id}>
-              <div className="flex items-center gap-3 cursor-pointer hover:bg-gray-200 p-2 font-semibold rounded transition-all">
+              <div className="flex items-center gap-3 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800 p-2 font-semibold rounded transition-all">
                 <div className="w-8 h-8">
                   <img
                     src={user.image}
@@ -63,7 +61,7 @@ const RightSidebar = () => {
                   />
                 </div>
                 <div className="hidden xl:block">
-                  <p className="flex gap-1 items-center text-base font-bold text-gray-600 capitalize">
+                  <p className="flex gap-1 items-center text-base font-bold text-gray-600 dark:text-white capitalize">
                     {user.userName}
                     {/* <GoVerified className="text-blue-400" /> */}
                   </p>

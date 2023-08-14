@@ -6,7 +6,7 @@ const List = ({ items, mt }: { items: string[]; mt: boolean }) => (
     {items.map((item) => (
       <p
         key={item}
-        className="text-gray-400 text-sm hover:underline cursor-pointer"
+        className="text-gray-400 dark:text-gray-200 text-sm hover:underline cursor-pointer"
       >
         {item}
       </p>
@@ -19,11 +19,11 @@ const year = date.getFullYear();
 
 const Footer = () => {
   return (
-    <div className="mt-6 hidden lg:block pl-6">
+    <div className="mt-6 hidden lg:block">
       <List items={footerList1} mt={false} />
       <List items={footerList2} mt />
       <List items={footerList3} mt />
-      <p className="text-gray-400 text-sm mt-5">{year} Viibes Social</p>
+      <p className="text-gray-400 dark:text-gray-200 text-sm mt-5">{year} Viibes Social</p>
     </div>
   );
 };
