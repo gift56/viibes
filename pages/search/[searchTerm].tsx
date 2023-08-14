@@ -26,7 +26,22 @@ const Searchpage = ({ videos }: SearchProps) => {
 
   return (
     <MainLayout showRight={false}>
-      <div className="w-full px-5"></div>
+      <div className="w-full px-5">
+        <div className="flex gap-10 mb-10 mt-10 border-b-2 border-gray-200 bg-white dark:bg-[#1d2225] w-full">
+          <p
+            className={`text-xl font-semibold cursor-pointer pb-2 mt-2 ${Accounts}`}
+            onClick={() => setIsAccount(true)}
+          >
+            Accounts
+          </p>
+          <p
+            className={`text-xl font-semibold cursor-pointer pb-2 mt-2 ${isVideos}`}
+            onClick={() => setIsAccount(false)}
+          >
+            Videos
+          </p>
+        </div>
+      </div>
     </MainLayout>
   );
 };
