@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const SettingsModal = () => {
-  return (
-    <div>SettingsModal</div>
-  )
+interface ModalProp {
+  show: boolean;
+  setShow: (event: any) => void;
+  setChange?: any;
 }
 
-export default SettingsModal
+const SettingsModal = () => {
+  return <div>SettingsModal</div>;
+};
+
+export default SettingsModal;
