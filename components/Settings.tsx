@@ -12,7 +12,7 @@ const Settings = () => {
         </span>
         <span>Theme Settings</span>
       </div>
-      <SettingsModal />
+      <SettingsModal show={openSetting} setShow={setOpenSetting} />
     </>
   );
 };

@@ -6,7 +6,7 @@ interface ModalProp {
   setChange?: any;
 }
 
-const SettingsModal = () => {
+const SettingsModal = ({ show, setShow, setChange }: ModalProp) => {
   return <div>SettingsModal</div>;
 };
 
