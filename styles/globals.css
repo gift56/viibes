@@ -35,9 +35,10 @@ img {
 }
 
 select {
-  background-image: url(/selectIcon.svg);
-  background-repeat: no-repeat;
+  @apply bg-[url('/selectIcon.svg')] cursor-pointer appearance-none bg-no-repeat bg-[center_right_1rem] dark:bg-[url('/whiteSelect.svg')]
+  /* background-image: url(/selectIcon.svg); */
+  /* background-repeat: no-repeat;
   background-position: right 16px center;
   appearance: none;
-  cursor: pointer;
+  cursor: pointer; */;
 }
