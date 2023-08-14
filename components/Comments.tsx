@@ -49,12 +49,12 @@ const Comments = ({
                               />
                             </div>
                             <div className="hidden xl:block">
-                              <p className="flex gap-1 items-center text-base font-bold text-gray-200 lowercase">
-                                {user.userName.replace(" ", "")}
+                              <p className="flex gap-1 items-center text-base font-bold text-gray-900 capitalize">
+                                {user.userName}
                                 {/* <GoVerified className="text-blue-400" /> */}
                               </p>
-                              <p className="flex gap-1 items-center text-xs font-bold text-gray-400 capitalize">
-                                {user.userName}
+                              <p className="flex gap-1 items-center text-xs font-bold text-gray-400 lowercase">
+                                {user.userName.replace(" ", "")}
                               </p>
                             </div>
                           </div>
@@ -84,7 +84,7 @@ const Comments = ({
               className="bg-gray-200 px-6 py-4 text-md font-medium border-2 w-[100%] md:w-[500px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg"
             />
             <button
-              className="text-md text-gray-100 bg-[#f51997] text-center rounded text-md font-medium py-3 px-3 w-25 outline-none"
+              className="text-base text-gray-100 bg-secondary text-center rounded text-md font-medium py-3 px-3 w-fit outline-none"
               onClick={addComment}
             >
               {postingComment ? "Commenting..." : "Comment"}
