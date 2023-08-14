@@ -58,11 +58,9 @@ const LeftSideBar = () => {
 
   const activeTopicStyle =
     "xl:border-2 hover:bg-gray-300 xl:border-[#f51997] px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-start cursor-pointer text-[#f51997] w-full";
-  // "xl:border-2 hover:bg-primary dark:hover:bg-gray-800 xl:border-[#f51997] px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer text-[#f51997]";
 
   const topicStyle =
     "xl:border-2 hover:bg-gray-300 xl:border-gray-300 px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-start cursor-pointer text-black w-full";
-  // "xl:border-2 hover:bg-primary dark:hover:bg-gray-800 xl:border-gray-300 dark:hover:xl:border-gray-600 px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer text-black dark:text-gray-100";
 
   return (
     <nav className="flex flex-col items-start justify-start gap-4 lg:h-screen py-5 w-full lg:px-4">
@@ -84,7 +82,7 @@ const LeftSideBar = () => {
       <div className="w-full lg:flex flex-col h-[90vh] overflow-y-auto hidden">
         <div className="lg:border-b-2 border-gray-200 xl:pb-2 mx-3">
           <Link href="/">
-            <div className="flex items-center justify-center xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 hover:bg-primary p-3">
+            <div className="flex items-center justify-center xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 p-3">
               <p className="text-2xl">
                 <AiFillHome />
               </p>
@@ -152,7 +150,7 @@ const LeftSideBar = () => {
       >
         <div
           ref={modalRef}
-          className={`flex flex-col h-full bg-primary gap-5 absolute top-0 p-4 w-[250px] bg-white`}
+          className={`flex flex-col h-full gap-5 absolute top-0 p-4 w-[250px] bg-white`}
         >
           <div className="w-full flex items-center justify-end">
             <span className="text-dark" onClick={() => setMobileNav(false)}>
@@ -227,7 +225,7 @@ const LeftSideBar = () => {
             <div className="w-full flex flex-col h-[80vh] overflow-y-auto">
               <div className="xl:border-b-2 border-gray-200 xl:pb-2">
                 <div onClick={() => setDropDownTopics((prev) => !prev)}>
-                  <div className="flex items-center justify-start xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 hover:bg-primary py-3">
+                  <div className="flex items-center justify-start xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 py-3">
                     <p className="text-2xl">
                       <AiFillHome />
                     </p>

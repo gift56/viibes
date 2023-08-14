@@ -57,7 +57,7 @@ const Searchpage = ({ videos }: SearchProps) => {
                       />
                     </div>
                     <div className="block">
-                      <p className="flex gap-1 items-center text-base font-bold md:text-2xl text-primary capitalize">
+                      <p className="flex gap-1 items-center text-base font-bold md:text-2xl text- capitalize">
                         {user.userName}
                         {/* <GoVerified className="text-blue-400" /> */}
                       </p>
