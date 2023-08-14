@@ -1,8 +1,13 @@
+import { Video } from "@/types";
 import { BASE_URL } from "@/utils";
 import axios from "axios";
 import React from "react";
 
-const Searchpage = () => {
+interface SearchProps {
+  videos: Video[];
+}
+
+const Searchpage = ({ videos }: SearchProps) => {
   return <div>Searchpage</div>;
 };
 
