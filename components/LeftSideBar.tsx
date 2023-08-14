@@ -15,6 +15,7 @@ import { FiChevronDown } from "react-icons/fi";
 const LeftSideBar = () => {
   const { userProfile, addUser, removeUser } = useAuthStore();
   const [mobileNav, setMobileNav] = useState(false);
+  const [dropDownTopics, setDropDownTopics] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const [logOut, setLogOut] = useState(false);
 
@@ -144,7 +145,7 @@ const LeftSideBar = () => {
           className={`flex flex-col h-full bg-primary gap-5 absolute top-0 p-4 w-[250px] bg-white`}
         >
           <div className="w-full flex items-center justify-end">
-            <span className="text-dark" onClick={() => setMobileNav(false)}>
+            <span className="text-dark" onClick={() => setDropDownTopics(true)}>
               <MdClose size={25} />
             </span>
           </div>
