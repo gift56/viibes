@@ -72,18 +72,18 @@ const SettingsModal = ({ show, setShow, setChange }: ModalProp) => {
           <div
             onClick={() => setTheme("light")}
             className={`flex items-center justify-start gap-3 cursor-pointer bg-white h-12 md:h-[60%] rounded-lg px-4 ${
-              currentTheme === "light" && "border-2 border-blue-600"
+              currentTheme === "light" && "border-2 border-secondary"
             }`}
           >
             <span className="text-[#fca532]">
               <HiSun size={30} />
             </span>
-            <span className="text-lg font-semibold select-none">Light</span>
+            <span className="text-lg font-semibold select-none text-black">Light</span>
           </div>
           <div
             onClick={() => setTheme("dark")}
             className={`flex items-center justify-start gap-3 cursor-pointer bg-gray-600 h-12 md:h-[60%] rounded-lg px-4 text-white ${
-              currentTheme === "dark" && "border-2 border-blue-600"
+              currentTheme === "dark" && "border-2 border-secondary"
             }`}
           >
             <span>
