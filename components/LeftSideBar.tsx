@@ -12,6 +12,7 @@ import useAuthStore from "@/store";
 import { createOrGetGoogleUser } from "@/utils";
 import { FiChevronDown } from "react-icons/fi";
 import { BiSearch } from "react-icons/bi";
+import { useTheme } from "next-themes";
 
 const LeftSideBar = () => {
   const { userProfile, addUser, removeUser } = useAuthStore();
@@ -20,6 +21,8 @@ const LeftSideBar = () => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [logOut, setLogOut] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const { systemTheme, theme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
 
   useEffect(() => {
     const handleClickOutside: EventListener = (event) => {
@@ -136,6 +139,7 @@ const LeftSideBar = () => {
               <GoogleLogin
                 onSuccess={(res) => createOrGetGoogleUser(res, addUser)}
                 onError={() => console.log("error")}
+                theme={`${currentTheme === "dark" && "filled_black"}`}
               />
             </div>
           )}
