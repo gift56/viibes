@@ -3,6 +3,7 @@ import axios from "axios";
 import { Video } from "@/types";
 import { NoResult, Upload, VideoCard } from "@/components";
 import MainLayout from "@/layouts/MainLayout";
+import { BASE_URL } from "@/utils";
 
 interface VideoProps {
   videos: Video[];
@@ -32,12 +33,21 @@ const Homepage = ({ videos }: VideoProps) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  const { data } = await axios.get("http://localhost:3000/api/post");
+export const getServerSideProps = async ({
+  query: { topic },
+}: {
+  query: { topic: string };
+}) => {
+  let reponse = null;
+  if (topic) {
+    reponse = await axios.get(`${BASE_URL}/api/discover/${topic}`);
+  } else {
+    reponse = await axios.get(`${BASE_URL}/api/post`);
+  }
 
   return {
     props: {
-      videos: data,
+      videos: reponse.data,
     },
   };
 };
