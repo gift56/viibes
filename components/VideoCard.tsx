@@ -124,7 +124,7 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
           >
             <Link
               href={`/detail/${post._id}`}
-              className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 border-b border-gray-400 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
+              className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 border-b border-gray-400 text-base font-medium text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
             >
               <span>
                 <MdOutlineVideoLibrary size={20} />
@@ -137,7 +137,7 @@ const VideoCard: NextPage<Postprops> = ({ post }) => {
                 download
                 target="_blank"
                 rel="noreferrer noopener"
-                className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-medium text-gray-600 hover:bg-gray-200 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
+                className="flex items-center w-full gap-4 justify-start cursor-pointer p-3 text-base font-mediumtext-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 rounded-tl-lg rounded-tr-lg"
               >
                 <span>
                   <BsDownload size={20} />
