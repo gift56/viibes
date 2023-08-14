@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        secondary: "#FEB800",
+        secondary: "#FE2C55",
       },
       boxShadow: {
         cardShad: "0px 14px 34px rgba(0, 0, 0, 0.05)",
