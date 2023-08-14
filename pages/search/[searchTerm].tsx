@@ -5,6 +5,8 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import useAuthStore from "@/store";
 import MainLayout from "@/layouts/MainLayout";
+import { NoResult, VideoCard } from "@/components";
+import Link from "next/link";
 
 interface SearchProps {
   videos: Video[];
@@ -41,6 +43,43 @@ const Searchpage = ({ videos }: SearchProps) => {
             Videos
           </p>
         </div>
+
+        {isAccount ? (
+          <div className="md:mt-16">
+            {searchedAccounts.length > 0 ? (
+              searchedAccounts.map((user: IUser, index: number) => (
+                <Link href={`/profile/${user._id}`} key={index}>
+                  <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200">
+                    <div>
+                      <img src={user.image} className="rounded-full" />
+                    </div>
+                    <div className="hidden xl:block">
+                      <p className="flex gap-1 items-center text-base font-bold text-primary capitalize">
+                        {user.userName}
+                        {/* <GoVerified className="text-blue-400" /> */}
+                      </p>
+                      <p className="flex gap-1 items-center text-xs font-bold text-gray-400  lowercase">
+                        @{user.userName.replace(" ", "")}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <NoResult text={`No video results for ${searchTerm}`} />
+            )}
+          </div>
+        ) : (
+          <div className="md:mt-16 flex flex-wrap gap-6 md:justify-start">
+            {videos.length ? (
+              videos.map((video: Video, index) => (
+                <VideoCard post={video} key={index} />
+              ))
+            ) : (
+              <NoResult text={`No video results for ${searchTerm}`} />
+            )}
+          </div>
+        )}
       </div>
     </MainLayout>
   );
