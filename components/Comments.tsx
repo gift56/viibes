@@ -30,7 +30,7 @@ const Comments = ({
 
   return (
     <>
-      <div className="border-t-2 border-gray-200 pt-4 px-10 bg-[#f8f8f8] border-b-2 lg:pb-0 pb-[100px]">
+      <div className="border-y border-gray-200 pt-4 px-10 bg-[#f8f8f8] dark:bg-gray-800 lg:pb-0 pb-[100px]">
         <div className="overflow-scroll lg:h-[290px]">
           {comments?.length ? (
             comments.map((item, index) => (
@@ -49,12 +49,12 @@ const Comments = ({
                               />
                             </div>
                             <div className="hidden xl:block">
-                              <p className="flex gap-1 items-center text-base font-bold text-gray-900 capitalize">
+                              <p className="flex gap-1 items-center text-base font-bold text-gray-900 dark:text-white capitalize">
                                 {user.userName}
                                 {/* <GoVerified className="text-blue-400" /> */}
                               </p>
                               <p className="flex gap-1 items-center text-xs font-bold text-gray-400 lowercase">
-                                {user.userName.replace(" ", "")}
+                                @{user.userName.replace(" ", "")}
                               </p>
                             </div>
                           </div>
@@ -81,7 +81,7 @@ const Comments = ({
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="Add comment..."
-              className="bg-gray-100 px-6 py-4 text-base font-medium border w-[100%] md:w-[500px] lg:w-[350px] border-gray-100 focus:outline-none flex-1 rounded-lg focus:border-secondary"
+              className="bg-gray-100 dark:bg-gray-800 px-4 h-12 text-base font-medium border w-[100%] md:w-[500px] lg:w-[350px] border-gray-100 focus:outline-none flex-1 rounded-lg focus:border-secondary"
             />
             <button
               className="text-base text-gray-100 bg-secondary text-center rounded font-medium px-7 w-fit outline-none"

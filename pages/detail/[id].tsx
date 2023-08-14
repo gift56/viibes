@@ -227,7 +227,7 @@ const VideoDetail = ({ postDetails }: PostProps) => {
               <p className="px-10 text-lg text-gray-600 dark:text-gray-200 font-medium">
                 {post.caption}
               </p>
-              <div className="mt-5 px-10">
+              <div className="mt-5 px-10 pb-2">
                 {userProfile && (
                   <LikeButton
                     likes={post.likes}
