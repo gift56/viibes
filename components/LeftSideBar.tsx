@@ -57,7 +57,7 @@ const LeftSideBar = () => {
   };
 
   const activeTopicStyle =
-    "xl:border-2 hover:bg-gray-300 xl:border-[#f51997] px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-start cursor-pointer text-[#f51997] w-full";
+    "xl:border-2 hover:bg-gray-300 xl:border-secondary px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-start cursor-pointer text-secondary w-full";
 
   const topicStyle =
     "xl:border-2 hover:bg-gray-300 xl:border-gray-300 px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-start cursor-pointer text-black w-full";

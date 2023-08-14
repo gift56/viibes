@@ -9,7 +9,7 @@ const Discover = () => {
   const { topic } = router.query;
 
   const activeTopicStyle =
-    "lg:border-2 hover:bg-gray-300 lg:border-[#f51997] px-3 py-2 rounded lg:rounded-full flex items-center gap-2 justify-center cursor-pointer text-[#f51997]";
+    "lg:border-2 hover:bg-gray-300 lg:border-secondary px-3 py-2 rounded lg:rounded-full flex items-center gap-2 justify-center cursor-pointer text-secondary";
 
   const topicStyle =
     "lg:border-2 hover:bg-gray-300 lg:border-gray-300 px-3 py-2 rounded lg:rounded-full flex items-center gap-2 justify-center cursor-pointer text-black";
