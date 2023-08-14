@@ -47,7 +47,7 @@ const SettingsModal = ({ show, setShow, setChange }: ModalProp) => {
         <h2 className="text-lg font-medium text-gray-900 text-center md:text-xl">
           Customize Your Background
         </h2>
-        <div className="flex items-center justify-between gap-5 flex-col md:flex-row bg-gray-200 px-4 w-full rounded-md md:h-20 py-4">
+        <div className="flex items-center justify-between gap-5 flex-col md:flex-row bg-gray-200 px-4 w-full rounded-md md:h-20 py-4 md:py-0">
           <div
             onClick={() => setTheme("light")}
             className={`flex items-center justify-start gap-3 cursor-pointer bg-white h-12 md:h-[60%] rounded-lg px-4 ${
