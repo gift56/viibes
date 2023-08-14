@@ -1,13 +1,21 @@
+import React, { useState } from "react";
 import { Video } from "@/types";
 import { BASE_URL } from "@/utils";
 import axios from "axios";
-import React from "react";
+import { useRouter } from "next/router";
+import useAuthStore from "@/store";
 
 interface SearchProps {
   videos: Video[];
 }
 
 const Searchpage = ({ videos }: SearchProps) => {
+  const [isAccount, setIsAccount] = useState(true);
+  const router = useRouter();
+  const { searchTerm }: any = router.query;
+  const { allUsers } = useAuthStore();
+
+  
   return <div>Searchpage</div>;
 };
 
