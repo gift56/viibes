@@ -145,7 +145,7 @@ const LeftSideBar = () => {
           className={`flex flex-col h-full bg-primary gap-5 absolute top-0 p-4 w-[250px] bg-white`}
         >
           <div className="w-full flex items-center justify-end">
-            <span className="text-dark" onClick={() => setDropDownTopics(true)}>
+            <span className="text-dark" onClick={() => setMobileNav(false)}>
               <MdClose size={25} />
             </span>
           </div>
@@ -198,16 +198,26 @@ const LeftSideBar = () => {
             )}
             <div className="w-full flex flex-col h-[80vh] overflow-y-auto">
               <div className="xl:border-b-2 border-gray-200 xl:pb-2">
-                <div onClick={() => setMobileNav(false)}>
-                  <div className="flex items-center justify-start xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 hover:bg-primary p-3">
+                <div onClick={() => setDropDownTopics((prev) => !prev)}>
+                  <div className="flex items-center justify-start xl:justify-start cursor-pointer font-semibold text-black rounded gap-3 hover:bg-primary py-3">
                     <p className="text-2xl">
                       <AiFillHome />
                     </p>
                     <span className="text-xl block">Follow Topics</span>
+                    <FiChevronDown
+                      size={25}
+                      className={`${
+                        dropDownTopics ? "rotate-180" : ""
+                      } transition-all duration-200`}
+                    />
                   </div>
                 </div>
               </div>
-              <div className="xl:border-b-2 xl:border-gray-200 py-4">
+              <div
+                className={`xl:border-b-2 xl:border-gray-200 py-4 transition-all duration-300 ${
+                  dropDownTopics ? "flex" : "hidden"
+                }`}
+              >
                 <div className="flex gap-3 flex-col items-start justify-start">
                   {topics.map((item) => (
                     <Link
