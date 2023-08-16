@@ -129,7 +129,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
           <motion.div
             animate={show ? "open" : "closed"}
             variants={variants}
-            className="lg:w-[850px] w-[90%] bg-white dark:bg-gray-900 rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4 lg:px-10"
+            className="lg:w-[850px] w-full bg-white dark:bg-gray-900 rounded-lg flex flex-col items-start justify-start gap-3 transition-all duration-300 h-[550px] overflow-y-auto p-4 lg:px-10"
           >
             <div className="w-full flex items-center justify-between gap-4">
               <div className="flex flex-col items-start justify-start w-full">
@@ -154,7 +154,7 @@ const UploadModal = ({ show, setShow, setChange }: ModalProp) => {
             <div className="w-full grid grid-cols-1 justify-start items-center md:grid-cols-2 md:justify-between gap-6">
               <div className="w-full">
                 <div
-                  className={`border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-none w-[260px] h-[400px] cursor-pointer hover:bg-gray-100 transition-all dark:hover:bg-gray-800 ${
+                  className={`border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-none md:w-[260px] h-[400px] cursor-pointer hover:bg-gray-100 transition-all dark:hover:bg-gray-800 ${
                     videoAsset?.url ? "p-0" : "p-10"
                   }`}
                 >
