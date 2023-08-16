@@ -1,6 +1,6 @@
 import { BsCodeSlash, BsEmojiSunglasses } from "react-icons/bs";
 import { IoGameController, IoFastFoodOutline } from "react-icons/io5";
-import { GiGalaxy, GiLipstick } from "react-icons/gi";
+import { GiGalaxy,GiTravelDress } from "react-icons/gi";
 import { FaPaw, FaMedal } from "react-icons/fa";
 
 export const topics = [
@@ -25,8 +25,8 @@ export const topics = [
     icon: <GiGalaxy />,
   },
   {
-    name: "beauty",
-    icon: <GiLipstick />,
+    name: "fashion",
+    icon: <GiTravelDress />,
   },
   {
     name: "animals",
